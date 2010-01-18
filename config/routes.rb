@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :courses
   end
   
-  map.root :controller => 'users', :action => 'new'
+  map.root :controller => 'home', :action => 'show'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
