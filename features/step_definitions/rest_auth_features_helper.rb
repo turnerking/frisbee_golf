@@ -8,6 +8,10 @@ include AuthenticatedTestHelper
 ActionController::Base.class_eval do
   def perform_action
     perform_action_without_rescue
+    if defined? @_flash
+      @_flash.store(session)
+      remove_instance_variable(:@_flash)
+    end
   end
 end
 Dispatcher.class_eval do

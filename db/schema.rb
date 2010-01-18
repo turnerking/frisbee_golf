@@ -9,7 +9,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100113233916) do
+ActiveRecord::Schema.define(:version => 20100114234857) do
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "tee_type"
+    t.integer  "difficulty"
+    t.integer  "tree_interference"
+    t.string   "hole_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "holes", :force => true do |t|
+    t.integer  "number"
+    t.integer  "par"
+    t.integer  "distance_in_ft"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -24,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20100113233916) do
     t.string   "gender",                    :limit => 2
     t.integer  "age"
     t.string   "state",                     :limit => 40
+    t.boolean  "admin",                                    :default => false
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
