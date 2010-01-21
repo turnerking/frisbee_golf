@@ -2,9 +2,13 @@ require 'spec_helper'
 
 describe HomeController do
 
-  #Delete this example and add some real ones
-  it "should use HomeController" do
-    controller.should be_an_instance_of(HomeController)
+  context "get show" do
+    it "assigns courses instance variable" do
+      courses = mock("courses collection")
+      Course.should_receive(:find).with(:all).and_return(courses)
+      get :show
+      assigns[:courses].should == courses
+    end
   end
 
 end

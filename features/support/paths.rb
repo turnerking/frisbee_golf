@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /the new course page/
       new_admin_course_path
+    when /the admin courses page/
+      admin_courses_path
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
