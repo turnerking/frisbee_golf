@@ -10,7 +10,7 @@ Feature: Manage courses
       |Oak Brook      |303 Bar St. |
       |Woodridge      |504 Baz Ave.|
       |Madison Meadows|789 Buz Ct. |
-		And I am logged as an admin
+		And I am logged in as an admin
 		When I am on the admin courses page
 		Then I should see the following courses:
 			|O'Brien Park   |301 Foo St. |
@@ -20,12 +20,15 @@ Feature: Manage courses
 		
   
   Scenario: Register new course
-		Given I am logged as an admin
+		Given I am logged in as an admin
     And I am on the new course page
-		And I fill in the following:
-			|Name   |Woodridge   |
-			|Address|123 Jump St.|
-    When I press "Create"
+		When I fill in "Name" with "Woodridge"
+		And I fill in "Address" with "123 Jump St."
+		And I select "Gravel" from "Tee Type"
+		And I select "3" from "Difficulty"
+		And I select "4" from "Tree Interference"
+		And I select "Basket" from "Hole Type"
+    And I press "Create"
 		Then I should see the following courses:
 			|Woodridge|
 
@@ -36,7 +39,7 @@ Feature: Manage courses
       |Oak Brook      |
       |Woodridge      |
       |Madison Meadows|
-		And I am logged as an admin
+		And I am logged in as an admin
     When I delete the 3rd course
     Then I should see the following courses:
       |O'Brien Park   |

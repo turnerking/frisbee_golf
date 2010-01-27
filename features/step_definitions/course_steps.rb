@@ -2,7 +2,7 @@ Given /^the following courses:$/ do |courses|
   Course.create!(courses.hashes)
 end
 
-Given /^I am logged as an admin$/ do
+Given /^I am logged in as an admin$/ do
   user = User.create!(:name => "Admin", :login => "siteadmin", :password => "abc123", :password_confirmation => "abc123", :email => "foo@example.com")
   user.update_attribute(:admin, true)
   visit new_session_url

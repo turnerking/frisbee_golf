@@ -6,6 +6,7 @@ class Admin::CoursesController < ApplicationController
   end
   
   def new
+    @course = Course.new
   end
   
   def create

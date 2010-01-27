@@ -11,7 +11,7 @@ user.update_attribute(:admin, true)
 
 Course.create!(:name => "O'Brien Park",
                :address => "O'Brien Park, Downers Grove, IL 60516",
-               :tee_type => "gravel",
+               :tee_type => "Gravel",
                :difficulty => 1,
                :tree_interference => 2,
-               :hole_type => "basket")
+               :hole_type => "Basket")

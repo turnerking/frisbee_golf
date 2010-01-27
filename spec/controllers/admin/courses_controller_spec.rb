@@ -51,7 +51,7 @@ describe Admin::CoursesController do
   
     context "delete destroy" do
       it "deletes a course from the database" do
-        @course = Course.create!
+        @course = Course.create!({"name" => "new"})
         Course.should_receive(:find).with("3").and_return(@course)
         lambda do
           delete :destroy, :id => "3"
