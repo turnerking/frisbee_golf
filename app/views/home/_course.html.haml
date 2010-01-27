@@ -1,5 +1,5 @@
 .course
-	.row= course.name
+	.row= link_to course.name, course_path(course)
 	.row= course.address
 	.row= course.difficulty
 	.row= course.tree_interference
