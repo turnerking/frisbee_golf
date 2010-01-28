@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :courses, :only => [:show]
+  map.resources :scorecards, :only => [:create]
   
   map.root :controller => 'home', :action => 'show'
 

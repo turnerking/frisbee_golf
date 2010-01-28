@@ -2,7 +2,8 @@ class Course < ActiveRecord::Base
   TEE_TYPES = ["Gravel", "Concrete", "Sand"]
   HOLE_TYPES = ["Basket", "Target", "Mixed"]
   
-  has_many :holes
+  has_many :holes, :order => :number
+  has_many :scorecards
   
   accepts_nested_attributes_for :holes, :allow_destroy => true, :reject_if => proc {|attributes| attributes["number"].blank? || attributes["par"].blank? || attributes["distance_in_ft"].blank?}
   

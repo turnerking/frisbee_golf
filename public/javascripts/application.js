@@ -14,3 +14,17 @@ function add_hole() {
 		$(inputs[i]).attr("name", $(inputs[i]).attr("name").replace(/\d+/, new_index));
 	}
 };
+
+var scoreShots = function() {
+	var total = 0;
+	$(".shots").each(function (i) {
+		total += new Number($($(".shots")[i]).val());
+	});
+	$("p.shot_total").html(total);
+}
+
+$(document).ready(function() {
+	scoreShots()
+	$(".shots").keyup(scoreShots);
+});
+

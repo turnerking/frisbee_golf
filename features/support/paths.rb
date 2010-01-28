@@ -10,6 +10,9 @@ module NavigationHelpers
     
     when /the home\s?page/
       '/'
+    when /the new scorecard page/
+      new_scorecard_path
+
     when /the new course page/
       new_admin_course_path
     when /the admin courses page/
