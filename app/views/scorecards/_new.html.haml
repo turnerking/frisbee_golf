@@ -1,6 +1,22 @@
+%h3= "Scorecard"
 - form_for @scorecard do |f|
   = hidden_field_tag "scorecard[course_id]", course.id
   = hidden_field_tag "scorecard[user_id]", current_user.id
+  .row
+    = f.label :weather
+    = f.select :weather, Scorecard::WEATHER_CONDITIONS
+  .row
+    = f.label :temperature
+    = f.text_field :temperature
+  .row
+    = f.label :ground_conditions
+    = f.select :ground_conditions, Scorecard::GROUND_CONDITIONS
+  .row
+    = f.label :played_at
+    = f.datetime_select :played_at
+  .row
+    = f.label :hours_to_play
+    = f.text_field :hours_to_play
   #scores
     .score_labels
       %p= "Distance"
@@ -22,4 +38,7 @@
       %p= "&nbsp;"
       %p= course.holes.sum('par')
       %p.shot_total= 0
+  .row
+    = f.label :notes, "Round Notes"
+    = f.text_area :notes
   = f.submit "Submit Round"

@@ -18,14 +18,30 @@ body {
   color: blue;
   margin-right: 10px; }
 
+.row {
+  margin: 2px 0px;
+  clear: left; }
+  .row .label, .row label {
+    width: 120px;
+    float: left;
+    clear: left;
+    text-align: right;
+    margin-right: 5px; }
+
+.course {
+  margin: 10px 0px 40px; }
+
 
 
 .score_labels, .score_totals {
   float: left; }
   .score_labels p, .score_totals p {
-    margin: 0;
-    line-height: 22px;
-    text-align: right; }
+    margin: 0px 5px;
+    line-height: 22px; }
+
+.score_labels p {
+  width: 115px;
+  text-align: right; }
 
 .score_fields {
   width: 30px;
