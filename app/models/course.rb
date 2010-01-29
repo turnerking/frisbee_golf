@@ -4,6 +4,7 @@ class Course < ActiveRecord::Base
   
   has_many :holes, :order => :number
   has_many :scorecards
+  has_many :reviews
   
   accepts_nested_attributes_for :holes, :allow_destroy => true, :reject_if => proc {|attributes| attributes["number"].blank? || attributes["par"].blank? || attributes["distance_in_ft"].blank?}
   

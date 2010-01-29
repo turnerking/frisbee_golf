@@ -10,6 +10,9 @@ module NavigationHelpers
     
     when /the home\s?page/
       '/'
+    when /the new review page/
+      new_review_path
+
     when /the new scorecard page/
       new_scorecard_path
 

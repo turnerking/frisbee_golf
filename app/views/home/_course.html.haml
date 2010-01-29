@@ -14,7 +14,7 @@
     %div= course.tree_interference
   .row
     .label= "Hole Type:"
-    %div= course.hole_type.titleize
+    %div= course.hole_type && course.hole_type.titleize
   .row
     .label= "Tee Type:"
-    %div= course.tee_type.titleize
+    %div= course.tee_type && course.tee_type.titleize
