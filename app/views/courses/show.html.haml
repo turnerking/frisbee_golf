@@ -1,4 +1,14 @@
-= render :partial => "home/course", :locals => {:course => @course}
-= render :partial => "scorecards/new", :locals => {:course => @course} if current_user
-= render :partial => "review", :collection => @reviews
-= render :partial => "reviews/new" if current_user
+#left-column
+  #course
+    %h3= "Course Information"
+    = render :partial => "course", :locals => {:course => @course}
+  #reviews
+    %h3= "Reviews"
+    - if @reviews.empty?
+      %p= "This course has not been reviewed yet"
+    - else
+      = render :partial => "review", :collection => @reviews
+    = render :partial => "reviews/new" if current_user
+#right-column
+  = render :partial => "scorecards/new", :locals => {:course => @course} if current_user
+

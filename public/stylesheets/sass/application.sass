@@ -1,5 +1,8 @@
 body
   background-color: blue
+  
+hr
+  width: 50%
 
 #content
   width: 1060px
@@ -19,6 +22,9 @@ body
   text-align: right
   color: blue
   margin-right: 10px
+  a
+    color: blue
+    text-decoration: none
   
 .row
   margin: 2px 0px
@@ -29,14 +35,35 @@ body
     clear: left
     text-align: right
     margin-right: 5px
+  .small_label
+    width: 65px
+    float: left
+    text-align: right
+    margin-right: 10px
+  #scorecard_submit
+    margin-left: 125px
+  #review_submit
+    margin-left: 70px
     
+#courses
+  padding: 0px 20px
+
 .course
   margin: 10px 0px 40px
 
-#courses
-  
-#scores
+#left-column
+  padding: 5px
+  display: inline-block
+  width: 470px
+  vertical-align: top
+  border-right: thin solid #888
 
+#right-column
+  padding: 5px 5px 5px 10px
+  display: inline-block
+  width: 550px
+  vertical-align: top
+  
 .score_labels, .score_totals
   float: left
   p
@@ -55,6 +82,16 @@ body
   margin: 0
   width: 30px
   
-#scorecard_submit
-  clear: left
-  display: block
+.review
+  padding: 5px
+  margin-right: 60px
+  border: thin solid black
+  span
+    font-size: 12px
+
+#new_review
+  margin-top: 10px
+  
+#footer
+  font-size: 12px
+  text-align: center

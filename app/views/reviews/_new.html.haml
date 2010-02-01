@@ -1,5 +1,8 @@
-- form_for :review, @review, :url => reviews_path do |f|
+- form_for :review, @review, :url => reviews_path, :html => {:id => "new_review"} do |f|
   = f.hidden_field :course_id
   = f.hidden_field :user_id
-  = f.text_area :body
-  = f.submit "Submit Review"
+  .row
+    .small_label= "Body"
+    = f.text_area :body
+  .row
+    = f.submit "Submit Review"

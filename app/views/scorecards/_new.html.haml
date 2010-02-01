@@ -1,44 +1,46 @@
-%h3= "Scorecard"
-- form_for @scorecard do |f|
-  = hidden_field_tag "scorecard[course_id]", course.id
-  = hidden_field_tag "scorecard[user_id]", current_user.id
-  .row
-    = f.label :weather
-    = f.select :weather, Scorecard::WEATHER_CONDITIONS
-  .row
-    = f.label :temperature
-    = f.text_field :temperature
-  .row
-    = f.label :ground_conditions
-    = f.select :ground_conditions, Scorecard::GROUND_CONDITIONS
-  .row
-    = f.label :played_at
-    = f.datetime_select :played_at
-  .row
-    = f.label :hours_to_play
-    = f.text_field :hours_to_play
-  #scores
-    .score_labels
-      %p= "Distance"
-      %p= "Hole"
-      %p= "Par"
-      %p= "Score"
-    - course.holes.each do |hole|
-      - f.fields_for :scores, Score.new do |score_fields|
-        .score_fields
-          = score_fields.text_field :distance_in_ft, :value => hole.distance_in_ft, :readonly => true, :class => "score"
-          %br
-          = score_fields.text_field :number, :value => hole.number, :readonly => true, :class => "score"
-          %br
-          = score_fields.text_field :par, :value => hole.par, :readonly => true, :class => "score"
-          %br
-          = score_fields.text_field :shots, :class => "score shots"
-    .score_totals
-      %p= course.holes.sum('distance_in_ft')
-      %p= "&nbsp;"
-      %p= course.holes.sum('par')
-      %p.shot_total= 0
-  .row
-    = f.label :notes, "Round Notes"
-    = f.text_area :notes
-  = f.submit "Submit Round"
+#scorecard
+  %h3= "Scorecard"
+  - form_for @scorecard do |f|
+    = hidden_field_tag "scorecard[course_id]", course.id
+    = hidden_field_tag "scorecard[user_id]", current_user.id
+    .row
+      = f.label :weather
+      = f.select :weather, Scorecard::WEATHER_CONDITIONS
+    .row
+      = f.label :temperature
+      = f.text_field :temperature
+    .row
+      = f.label :ground_conditions
+      = f.select :ground_conditions, Scorecard::GROUND_CONDITIONS
+    .row
+      = f.label :played_at
+      = f.datetime_select :played_at
+    .row
+      = f.label :hours_to_play
+      = f.text_field :hours_to_play
+    #scores
+      .score_labels
+        %p= "Distance"
+        %p= "Hole"
+        %p= "Par"
+        %p= "Score"
+      - course.holes.each do |hole|
+        - f.fields_for :scores, Score.new do |score_fields|
+          .score_fields
+            = score_fields.text_field :distance_in_ft, :value => hole.distance_in_ft, :readonly => true, :class => "score"
+            %br
+            = score_fields.text_field :number, :value => hole.number, :readonly => true, :class => "score"
+            %br
+            = score_fields.text_field :par, :value => hole.par, :readonly => true, :class => "score"
+            %br
+            = score_fields.text_field :shots, :class => "score shots"
+      .score_totals
+        %p= course.holes.sum('distance_in_ft')
+        %p= "&nbsp;"
+        %p= course.holes.sum('par')
+        %p.shot_total= 0
+    .row
+      = f.label :notes, "Round Notes"
+      = f.text_area :notes
+    .row
+      = f.submit "Submit Round"

@@ -1,5 +1,5 @@
 .review
   %p= review.body
-  %span= "By #{review.user.name}"
-  %span= review.created_at
+  %span= "By #{review.user.name} "
+  %span= "#{distance_of_time_in_words(review.created_at, Time.now)} ago"
   

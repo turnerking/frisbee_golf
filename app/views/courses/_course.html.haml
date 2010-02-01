@@ -1,0 +1,19 @@
+.course
+  .row
+    .label= "Course Name:"
+    %div= course.name
+  .row
+    .label= "Location:"
+    %div= course.address
+  .row
+    .label= "Difficulty Rating:"
+    %div= course.difficulty
+  .row
+    .label= "Tree Interference:"
+    %div= course.tree_interference
+  .row
+    .label= "Hole Type:"
+    %div= course.hole_type && course.hole_type.titleize
+  .row
+    .label= "Tee Type:"
+    %div= course.tee_type && course.tee_type.titleize

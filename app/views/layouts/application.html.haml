@@ -7,5 +7,8 @@
   %body
     #content
       = render :partial => "/users/user_bar"
-      %h1#home_title= "Frisbee Golf Tracker"
+      %h1#home_title= link_to "Frisbee Golf Tracker", "/"
       = yield
+      #footer
+        %hr
+        This site was created and is maintained by Turner King
