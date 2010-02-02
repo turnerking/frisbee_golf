@@ -27,11 +27,14 @@
       - course.holes.each do |hole|
         - f.fields_for :scores, Score.new do |score_fields|
           .score_fields
-            = score_fields.text_field :distance_in_ft, :value => hole.distance_in_ft, :readonly => true, :class => "score"
+            = score_fields.hidden_field :distance_in_ft, :value => hole.distance_in_ft
+            = score_fields.text_field :distance_in_ft, :value => hole.distance_in_ft, :disabled => true, :class => "score"
             %br
-            = score_fields.text_field :number, :value => hole.number, :readonly => true, :class => "score"
+            = score_fields.hidden_field :number, :value => hole.number
+            = score_fields.text_field :number, :value => hole.number, :disabled => true, :class => "score"
             %br
-            = score_fields.text_field :par, :value => hole.par, :readonly => true, :class => "score", :tab_index => nil
+            = score_fields.hidden_field :par, :value => hole.par
+            = score_fields.text_field :par, :value => hole.par, :disabled => true, :class => "score"
             %br
             = score_fields.text_field :shots, :class => "score shots"
       .score_totals
