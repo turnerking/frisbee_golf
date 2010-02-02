@@ -8,17 +8,17 @@
       = f.select :weather, Scorecard::WEATHER_CONDITIONS
     .row
       = f.label :temperature
-      = f.text_field :temperature
+      = f.text_field :temperature, :class => "integer"
     .row
       = f.label :ground_conditions
       = f.select :ground_conditions, Scorecard::GROUND_CONDITIONS
     .row
       = f.label :played_at
-      = f.datetime_select :played_at
+      = f.datetime_select :played_at, :use_short_month => true
     .row
       = f.label :hours_to_play
-      = f.text_field :hours_to_play
-    #scores
+      = f.text_field :hours_to_play, :class => "integer"
+    #scores.row
       .score_labels
         %p= "Distance"
         %p= "Hole"
@@ -31,7 +31,7 @@
             %br
             = score_fields.text_field :number, :value => hole.number, :readonly => true, :class => "score"
             %br
-            = score_fields.text_field :par, :value => hole.par, :readonly => true, :class => "score"
+            = score_fields.text_field :par, :value => hole.par, :readonly => true, :class => "score", :tab_index => nil
             %br
             = score_fields.text_field :shots, :class => "score shots"
       .score_totals
@@ -41,6 +41,6 @@
         %p.shot_total= 0
     .row
       = f.label :notes, "Round Notes"
-      = f.text_area :notes
+      = f.text_area :notes, :rows => 5
     .row
       = f.submit "Submit Round"

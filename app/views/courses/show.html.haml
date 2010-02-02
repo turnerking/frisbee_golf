@@ -4,10 +4,10 @@
     = render :partial => "course", :locals => {:course => @course}
   #reviews
     %h3= "Reviews"
-    - if @reviews.empty?
+    - if @course.reviews.empty?
       %p= "This course has not been reviewed yet"
     - else
-      = render :partial => "review", :collection => @reviews
+      = render :partial => "review", :collection => @course.reviews
     = render :partial => "reviews/new" if current_user
 #right-column
   = render :partial => "scorecards/new", :locals => {:course => @course} if current_user

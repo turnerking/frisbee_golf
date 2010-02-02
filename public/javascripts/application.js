@@ -17,14 +17,14 @@ function add_hole() {
 
 var scoreShots = function() {
 	var total = 0;
-	$(".shots").each(function (i) {
-		total += new Number($($(".shots")[i]).val());
+	$(".shots").each(function() {
+		total += new Number($(this).val());
 	});
 	$("p.shot_total").html(total);
 }
 
 $(document).ready(function() {
-	scoreShots()
+	scoreShots();
 	$(".shots").keyup(scoreShots);
 });
 

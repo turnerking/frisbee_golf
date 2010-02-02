@@ -44,6 +44,8 @@ hr
     margin-left: 125px
   #review_submit
     margin-left: 70px
+  input.integer
+    width: 60px
     
 #courses
   padding: 0px 20px
@@ -54,18 +56,22 @@ hr
 #left-column
   padding: 5px
   display: inline-block
-  width: 470px
+  width: 510px
   vertical-align: top
   border-right: thin solid #888
 
 #right-column
   padding: 5px 5px 5px 10px
   display: inline-block
-  width: 550px
+  width: 510px
   vertical-align: top
   
-.score_labels, .score_totals
+#scorecard .row
+  margin-bottom: 5px
+  
+.score_labels, .score_totals, .score_fields
   float: left
+  margin-bottom: 5px
   p
     margin: 0px 5px
     line-height: 22px
@@ -76,7 +82,6 @@ hr
 
 .score_fields
   width: 30px
-  float: left
 
 .score
   margin: 0
@@ -86,8 +91,12 @@ hr
   padding: 5px
   margin-right: 60px
   border: thin solid black
+  border-collapse: true
   span
-    font-size: 12px
+    font-size: 11px
+  p
+    margin: 10px 0px 3px
+    font-size: 14px
 
 #new_review
   margin-top: 10px
