@@ -1,0 +1,8 @@
+- @users.each do |user|
+  = user.name
+  = user.age
+  = user.state
+  - form_for Friendship.new, :url => user_friendships_path(:user_id => current_user.id) do |f|
+    = hidden_field_tag "friendship[requester_id]", current_user.id
+    = hidden_field_tag "friendship[approver_id]", user.id
+    = f.submit "Add as Friend"

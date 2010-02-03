@@ -1,4 +1,6 @@
 .course
-	.row= course.name
-	.row= course.address
-	= link_to "Delete", admin_course_path(course), :method => :delete
+  .row
+    %div= course.name
+  .row
+    %div= course.address
+  = link_to "Delete", admin_course_path(course), :method => :delete

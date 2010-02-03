@@ -10,6 +10,9 @@ module NavigationHelpers
     
     when /the home\s?page/
       '/'
+    when /the new friend page/
+      new_friend_path
+
     when /the new review page/
       new_review_path
 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100129140457) do
+ActiveRecord::Schema.define(:version => 20100203023803) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
@@ -18,6 +18,21 @@ ActiveRecord::Schema.define(:version => 20100129140457) do
     t.integer  "difficulty"
     t.integer  "tree_interference"
     t.string   "hole_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "friendships", :force => true do |t|
+    t.datetime "approved_at"
+    t.integer  "requester_id"
+    t.integer  "approver_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "friendships_users", :id => false, :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friendship_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

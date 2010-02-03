@@ -1,0 +1,4 @@
+- @requests.each do |friend_request|
+  - form_for friend_request do |f|
+    = f.submit "Approve Friendship"
+  = link_to "Deny Friendship", friendship_path(friend_request), :method => :delete

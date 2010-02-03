@@ -20,13 +20,14 @@ class User < ActiveRecord::Base
 
   has_many :scorecards
   has_many :reviews
+  has_and_belongs_to_many :friendships, :conditions => "approved_at IS NOT NULL"
+  has_many :unapproved_friendships, :class_name => "Friendship", :foreign_key => :requester_id, :conditions => "approved_at IS NULL"
+  has_many :friendships_to_approve, :class_name => "Friendship", :foreign_key => :approver_id, :conditions => "approved_at IS NULL"
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :gender, :age, :state
-
-
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
@@ -46,6 +47,10 @@ class User < ActiveRecord::Base
 
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
+  end
+  
+  def friends
+    self.friendships.collect {|f| f.users(:conditions => ["id != ?", id])}
   end
 
   protected
