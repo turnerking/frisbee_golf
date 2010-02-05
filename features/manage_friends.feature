@@ -28,7 +28,7 @@ Feature: Manage friends
     And "Carolyn Hartnett" has a friend request from "Phil Roth"
     And I am logged in with "carolynmh" and "abc123"
     And I go to the home page
-    And I follow "pending friend requests"
+    And I follow "1"
     When I press "Approve Friendship"
     Then "Carolyn Hartnett" should not have a pending approval
     And "Phil Roth" should not have a request awaiting approval
@@ -46,8 +46,8 @@ Feature: Manage friends
     And "Carolyn Hartnett" has a friend request from "Phil Roth"
     And I am logged in with "carolynmh" and "abc123"
     And I go to the home page
-    And I follow "pending friend requests"
-    When I follow "Deny Friendship"
+    And I follow "1"
+    When I press "Deny Friendship"
     Then "Carolyn Hartnett" should not have a pending approval
     And "Phil Roth" should not have a request awaiting approval
     And "Carolyn Hartnett" should have no friends

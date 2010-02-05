@@ -15,6 +15,7 @@ h3 {
 hr {
   width: 50%; }
 
+
 #content {
   width: 1060px;
   margin: 10px auto;
@@ -22,12 +23,40 @@ hr {
   background-color: tan; }
 
 .notice, .error {
-  width: 100%;
-  align: center; }
+  width: 40%;
+  padding: 10px 0px 10px;
+  margin: 0px auto;
+  text-align: center;
+  font-weight: bold;
+  clear: both; }
 
+.notice {
+  color: green;
+  background-color: #88FF88;
+  border: thin solid green; }
 
+.error {
+  color: red;
+  background-color: #FF8888;
+  border: thin solid red; }
+
+#user-bar-action {
+  float: right;
+  text-align: right; }
+
+#pending-requests {
+  float: left;
+  width: 250px; }
+
+#search-box {
+  width: 300px;
+  margin: 0px auto; }
+  #search-box form {
+    margin-bottom: 10px;
+    float: left; }
 
 #home_title {
+  margin-top: 53px;
   text-align: right;
   margin-right: 75px;
   font-size: 52px;
@@ -36,6 +65,11 @@ hr {
   border-bottom: thin solid #888; }
   #home_title a {
     text-decoration: none; }
+
+#footer {
+  font-size: 12px;
+  text-align: center; }
+
 
 .row {
   margin: 2px 0px;
@@ -57,6 +91,7 @@ hr {
     margin-left: 70px; }
   .row input.integer {
     width: 60px; }
+
 
 #courses {
   padding: 0px 20px; }
@@ -115,6 +150,13 @@ hr {
 #new_review {
   margin-top: 10px; }
 
-#footer {
-  font-size: 12px;
-  text-align: center; }
+
+.friend-request, .friend-possibility {
+  width: 250px;
+  height: 50px; }
+  .friend-request .info, .friend-possibility .info {
+    float: left; }
+  .friend-request .button, .friend-possibility .button {
+    float: right;
+    clear: right;
+    height: 22px; }

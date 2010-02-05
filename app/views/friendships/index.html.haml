@@ -1,4 +1,8 @@
 - @requests.each do |friend_request|
-  - form_for friend_request do |f|
-    = f.submit "Approve Friendship"
-  = link_to "Deny Friendship", friendship_path(friend_request), :method => :delete
+  .friend-request
+    = render :partial => "shared/user_blurb", :locals => {:user => friend_request.requester}
+    .button
+      - form_for friend_request do |f|
+        = f.submit "Approve Friendship"
+    .button
+      = button_to "Deny Friendship", friendship_path(friend_request), :method => :delete

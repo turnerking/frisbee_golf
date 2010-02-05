@@ -25,4 +25,12 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
+  
+  def show
+    @user = User.find(params[:id])
+    unless current_user && (current_user == @user || @user.friends.include?(current_user))
+      flash[:error] = "You don't have access to this page"
+      redirect_to "/" and return
+    end
+  end
 end

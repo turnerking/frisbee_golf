@@ -1,0 +1,6 @@
+.info
+  = user.name
+  %br
+  = user.state.blank? ? "From Parts Unknown" : user.state
+  - unless user.age.blank?
+    = " - #{user.age}yo"

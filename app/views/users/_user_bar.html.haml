@@ -1,18 +1,19 @@
-.notice
-  = flash[:notice]
-.error
-  = flash[:error]
 - if logged_in?
-  #user-bar-greeting
-    = "Logged in as #{link_to_current_user :content_method => :login}"
+  #pending-requests
+    - unless current_user.friendships_to_approve.empty?
+      = "You have "
+      = link_to(current_user.friendships_to_approve.size, user_friendships_path(:user_id => current_user))
+      = " pending friend request"
+      = current_user.friendships_to_approve.size > 1 ? "s" : ""
+  #search-box
+    - form_tag(users_url, :method => :get) do
+      = text_field_tag :search
+      = submit_tag "Search for Friends"
   #user-bar-action
+    = link_to_current_user :content_method => :login
+    = "/"
     = link_to "Log out", logout_path, { :title => "Log out" }
-  = Friendship.all.inspect
-  - unless current_user.friendships_to_approve.empty?
-    = link_to("pending friend requests", user_friendships_path(:user_id => current_user)) 
 - else
-  #user-bar-greeting
-    = link_to_login_with_IP 'Not logged in', :style => 'border: none;'
   #user-bar-action
     = link_to "Log in",  login_path,  { :title => "Log in" }
     = "/"

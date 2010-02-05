@@ -28,3 +28,9 @@ $(document).ready(function() {
 	$(".shots").keyup(scoreShots);
 });
 
+$(document).ready(function() {
+	if($("div.notice, div.error")) {
+		setTimeout("$(\"div.notice, div.error\").slideUp(500)", 2000);
+	}
+});
+

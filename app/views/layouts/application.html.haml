@@ -8,7 +8,15 @@
     #content
       = render :partial => "/users/user_bar"
       %h1#home_title= link_to "Frisbee Golf Tracker", "/"
+      - if flash[:notice]
+        .notice
+          = flash[:notice]
+      - if flash[:error]
+        .error
+          = flash[:error]
       = yield
       #footer
         %hr
         This site was created and is maintained by Turner King
+        %span.dummy="!"
+        
