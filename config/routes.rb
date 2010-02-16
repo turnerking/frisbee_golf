@@ -3,8 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-  map.resources :users do |users|
-    users.resources :friendships, :shallow => true
+  map.resources :users do |user|
+    user.resources :friendships, :shallow => true
   end
 
   map.resource :session, :only =>[:new, :create]
@@ -13,7 +13,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :courses
   end
   
-  map.resources :courses, :only => [:show]
+  map.resources :courses, :only => [:show] do |course|
+    course.resources :challenges, :shallow => true
+  end
   map.resources :scorecards, :only => [:create]
   map.resources :reviews, :only => [:create]
   

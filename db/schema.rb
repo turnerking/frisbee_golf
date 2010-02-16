@@ -9,7 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100203023803) do
+ActiveRecord::Schema.define(:version => 20100208143023) do
+
+  create_table "challengers", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "challenge_id"
+  end
+
+  create_table "challenges", :force => true do |t|
+    t.integer  "organizer_id"
+    t.integer  "course_id"
+    t.datetime "play_from"
+    t.datetime "play_to"
+    t.datetime "submit_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "courses", :force => true do |t|
     t.string   "name"

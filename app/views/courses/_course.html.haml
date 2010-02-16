@@ -17,3 +17,6 @@
   .row
     .label= "Tee Type:"
     %div= course.tee_type && course.tee_type.titleize
+  - if current_user
+    .row
+      = link_to "Create New Challenge", new_course_challenge_path(:course_id => course.id)

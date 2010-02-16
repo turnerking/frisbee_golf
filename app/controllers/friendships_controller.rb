@@ -11,8 +11,7 @@ class FriendshipsController < ApplicationController
   
   def update
     friendship = Friendship.find(params[:id])
-    friendship.update_attributes(:approved_at => Time.now)
-    friendship.users << friendship.requester << friendship.approver
+    friendship.approve
     redirect_to "/"
   end
   

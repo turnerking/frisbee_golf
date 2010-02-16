@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
 
   has_many :scorecards
   has_many :reviews
+  has_and_belongs_to_many :challenges, :join_table => "challengers"
+  has_many :organized_challenges, :class_name => "Challenge", :foreign_key => :organizer_id
   has_and_belongs_to_many :friendships, :conditions => "approved_at IS NOT NULL"
   has_many :unapproved_friendships, :class_name => "Friendship", :foreign_key => :requester_id, :conditions => "approved_at IS NULL"
   has_many :friendships_to_approve, :class_name => "Friendship", :foreign_key => :approver_id, :conditions => "approved_at IS NULL"
@@ -50,7 +52,18 @@ class User < ActiveRecord::Base
   end
   
   def friends
-    self.friendships.collect {|f| f.users(:conditions => ["id != ?", id])}
+    self.friendships.collect do |f|
+      f.users - Array.new(1, self)
+    end.flatten
+  end
+
+  def best_score_for(play_from, play_to, course_id)
+    all_scorecards = self.scorecards.find(:all, :conditions => ["played_at > ? AND played_at < ? AND course_id = ?", play_from, play_to, course_id])
+    if all_scorecards.empty?
+      nil
+    else
+      all_scorecards.sort {|a,b| a.total_score <=> b.total_score}[0]
+    end
   end
 
   protected

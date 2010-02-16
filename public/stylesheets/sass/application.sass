@@ -71,6 +71,9 @@ hr
 #footer
   font-size: 12px
   text-align: center
+  clear: both
+  p
+    margin: 0px
 
 /tabular divs for form and content display
  
@@ -132,6 +135,9 @@ hr
 
 .score_fields
   width: 30px
+  
+.score_totals
+  min-width: 40px
 
 .score
   margin: 0
@@ -154,6 +160,31 @@ hr
 #new_review
   margin-top: 10px
   
+/ New Challenge page
+#content_box
+  margin-left: 125px
+  height: 252px
+  width: 765px
+  overflow: auto
+  .friend_with_checkbox
+    float: left
+    width: 204px
+    margin: 10px
+    padding: 10px
+    border: 3px dotted #004400
+    .info
+      display: inline-block
+    input
+      float: right
+      margin-right: 10px
+      margin-top: 10px
+      
+/ Show Challenge page
+#leaderboard
+  margin-bottom: 50px
+  #non_scoring_users .score_totals
+    font-style: italic
+      
 
 
 / Friendships index

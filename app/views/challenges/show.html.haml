@@ -1,0 +1,58 @@
+#leaderboard
+  .row
+    .label= "Course"
+    .name= Course.find(@challenge.course_id).name
+  .row
+    .label= "Organizer"
+    .name= User.find(@challenge.organizer_id).name
+  .row
+    .label= "Play time"
+    .name= "#{@challenge.play_from.to_formatted_s(:long_ordinal)} - #{@challenge.play_to.to_formatted_s(:long_ordinal)  }"
+  .row
+    .label= "Submit by"
+    .name= @challenge.submit_by.to_formatted_s(:long_ordinal)
+  #scores.row
+    .score_labels
+      %p= "Distance"
+      %p= "Hole"
+      %p= "Par"
+    - @challenge.course.holes.each do |hole|
+      .score_fields
+        = text_field_tag :distance_in_ft, hole.distance_in_ft, :disabled => true, :class => "score"
+        %br
+        = text_field_tag :number, hole.number, :disabled => true, :class => "score"
+        %br
+        = text_field_tag :par, hole.par, :disabled => true, :class => "score"
+        %br
+    .score_totals
+      %p= @challenge.course.holes.sum('distance_in_ft')
+      %p= "&nbsp;"
+      %p= @challenge.course.holes.sum('par')
+    .score_totals
+      %p= "&nbsp;"
+      %p= "&nbsp;"
+      %p= show_golf_score(@challenge.course.holes.sum('par'), @challenge.course.holes.sum('par'))
+    
+  #scoring_users
+    - @challenge.leaderboard.each do |scorecard|
+      .row
+        .score_labels
+          %p= scorecard.user.name
+        - scorecard.scores.each do |score|
+          .score_fields
+            = text_field_tag :shots, score.shots, :disabled => true, :class => "score"
+        .score_totals
+          %p= scorecard.scores.sum('shots')
+        .score_totals
+          %p= show_golf_score(scorecard.scores.sum('shots'), @challenge.course.holes.sum('par'))
+      
+
+  #non_scoring_users.row
+    .score_labels
+      - @challenge.non_scoring_users.each do |user|
+        %p= user.name
+    .score_totals
+      - @challenge.non_scoring_users.size.times do
+        %p= "Score has not been submitted"
+  .row
+      

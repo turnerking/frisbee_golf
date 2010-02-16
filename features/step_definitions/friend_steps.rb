@@ -1,14 +1,3 @@
-Given /^the following users:$/ do |users|
-  User.create!(users.hashes)
-end
-
-Given /^I am logged in with "(.*)" and "(.*)"$/ do |username, password|
-  visit new_session_url
-  fill_in("login", :with => username)
-  fill_in("password", :with => password)
-  click_button("Log In")
-end
-
 Given /^I search for "(.*)"$/ do |search|
   get users_path(:search => search)
 end

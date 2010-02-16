@@ -10,6 +10,9 @@ module NavigationHelpers
     
     when /the home\s?page/
       '/'
+    when /the new challenge page/
+      new_challenge_path
+
     when /the new friend page/
       new_friend_path
 

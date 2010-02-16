@@ -1,0 +1,3 @@
+.friend_with_checkbox
+  = render :partial => "shared/user_blurb", :locals => {:user => user}
+  = check_box_tag "challenge[user_ids][]", user.id, false, :id => "challenge_user_id_#{user.id}"
