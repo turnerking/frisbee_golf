@@ -1,5 +1,7 @@
 #scorecard
   %h3= "Scorecard"
+  - unless @scorecard.errors.empty?
+    .formError= "There were problems with your scorecard:"
   - form_for @scorecard do |f|
     = hidden_field_tag "scorecard[course_id]", course.id
     = hidden_field_tag "scorecard[user_id]", current_user.id
@@ -9,6 +11,7 @@
     .row
       = f.label :temperature
       = f.text_field :temperature, :class => "integer"
+    = error_message_on @scorecard, :temperature, :prepend_text => "Temperature "
     .row
       = f.label :ground_conditions
       = f.select :ground_conditions, Scorecard::GROUND_CONDITIONS
@@ -42,6 +45,7 @@
         %p= "&nbsp;"
         %p= course.holes.sum('par')
         %p.shot_total= 0
+    = error_message_on @scorecard, :base
     .row
       = f.label :notes, "Round Notes"
       = f.text_area :notes, :rows => 5

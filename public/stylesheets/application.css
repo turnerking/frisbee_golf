@@ -94,6 +94,14 @@ hr {
     margin-left: 70px; }
   .row input.integer {
     width: 60px; }
+  .row .info {
+    margin-left: 130px; }
+
+
+.formError {
+  color: red;
+  margin-left: 130px;
+  clear: both; }
 
 
 #courses {
@@ -101,6 +109,9 @@ hr {
 
 .course {
   margin: 10px 0px 40px; }
+
+.us {
+  margin: 0px 30px 0px 10px; }
 
 #left-column {
   padding: 5px;

@@ -2,7 +2,43 @@
   = f.hidden_field :course_id
   = f.hidden_field :user_id
   .row
-    .small_label= "Body"
+    = f.label :difficulty
+    = f.radio_button :difficulty, 1
+    = "1"
+    = f.radio_button :difficulty, 2
+    = "2"
+    = f.radio_button :difficulty, 3
+    = "3"
+    = f.radio_button :difficulty, 4
+    = "4"
+    = f.radio_button :difficulty, 5
+    = "5"
+  .row
+    = f.label :tree_interference
+    = f.radio_button :tree_interference, 1
+    = "1"
+    = f.radio_button :tree_interference, 2
+    = "2"
+    = f.radio_button :tree_interference, 3
+    = "3"
+    = f.radio_button :tree_interference, 4
+    = "4"
+    = f.radio_button :tree_interference, 5
+    = "5"
+  .row
+    = f.label :course_quality
+    = f.radio_button :course_quality, 1
+    = "1"
+    = f.radio_button :course_quality, 2
+    = "2"
+    = f.radio_button :course_quality, 3
+    = "3"
+    = f.radio_button :course_quality, 4
+    = "4"
+    = f.radio_button :course_quality, 5
+    = "5"
+  .row
+    = f.label :body
     = f.text_area :body, :rows => 5
   .row
     = f.submit "Submit Review"

@@ -1,22 +1,29 @@
 .course
   .row
     .label= "Course Name:"
-    %div= course.name
+    .info= course.name
   .row
     .label= "Location:"
-    %div= course.address
+    .info= course.address
   .row
-    .label= "Difficulty Rating:"
-    %div= course.difficulty
+    .label= "Difficulty:"
+    .info
+      %span.us= "Us: #{course.difficulty}/5"
+      %span= "Community: #{course.community_difficulty}/5"
   .row
     .label= "Tree Interference:"
-    %div= course.tree_interference
+    .info
+      %span.us= "Us: #{course.tree_interference}/5"
+      %span= "Community: #{course.community_tree_interference}/5"
   .row
     .label= "Hole Type:"
-    %div= course.hole_type && course.hole_type.titleize
+    .info= course.hole_type && course.hole_type.titleize
   .row
     .label= "Tee Type:"
-    %div= course.tee_type && course.tee_type.titleize
+    .info= course.tee_type && course.tee_type.titleize
+  .row
+    .label= "Course Quality:"
+    .info= "#{course.course_quality}/5"
   - if current_user
     .row
       = link_to "Create New Challenge", new_course_challenge_path(:course_id => course.id)

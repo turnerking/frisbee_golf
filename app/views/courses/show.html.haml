@@ -1,13 +1,13 @@
 #left-column
   #course
     %h3= "Course Information"
-    = render :partial => "course", :locals => {:course => @course}
+    = render :partial => "courses/course", :locals => {:course => @course}
   #reviews
     %h3= "Reviews"
     - if @course.reviews.empty?
       %p= "This course has not been reviewed yet"
     - else
-      = render :partial => "review", :collection => @course.reviews
+      = render :partial => "courses/review", :collection => @course.reviews
     = render :partial => "reviews/new" if current_user
 #right-column
   = render :partial => "scorecards/new", :locals => {:course => @course} if current_user
