@@ -3,11 +3,13 @@ require 'spec_helper'
 describe Scorecard do
   before(:each) do
     @valid_attributes = {
-      :temperature => "64"
+      :temperature => "64",
+      :user_id => 1,
+      :course_id => 4
     }
   end
 
-  it "should create a new instance given valid attributes" do
+  it "creates a new instance given valid attributes" do
     Scorecard.new(@valid_attributes).should be_valid
   end
   
@@ -16,6 +18,24 @@ describe Scorecard do
       scorecard = Scorecard.new(@valid_attributes.merge(:temperature => "abe"))
       scorecard.should_not be_valid
       scorecard.errors.on(:temperature).should_not be_nil
+    end
+    
+    it "must have a user_id" do
+      scorecard = Scorecard.new(@valid_attributes.merge(:user_id => nil))
+      scorecard.should_not be_valid
+      scorecard.errors.on(:user_id).should_not be_nil
+    end
+    
+    it "must have a course_id" do
+      scorecard = Scorecard.new(@valid_attributes.merge(:course_id => nil))
+      scorecard.should_not be_valid
+      scorecard.errors.on(:course_id).should_not be_nil
+    end
+    
+    it "must not have a bullshit score" do
+      scorecard = Scorecard.new(@valid_attributes.merge("scores_attributes" => {"0" => {"par" => "6", "shots" => "1", "number" => 1, "distance_in_ft" => 300}}))
+      scorecard.should_not be_valid
+      scorecard.errors.on(:base).should_not be_nil
     end
   end
   
@@ -30,14 +50,6 @@ describe Scorecard do
     
     it "can have a played at time" do
       Scorecard.new.should respond_to(:played_at)
-    end
-    
-    it "can have a user" do
-      Scorecard.new.should respond_to(:user_id)
-    end
-    
-    it "can have a course" do
-      Scorecard.new.should respond_to(:course)
     end
     
     it "can have notes" do

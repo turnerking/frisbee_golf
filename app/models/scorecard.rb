@@ -9,6 +9,8 @@ class Scorecard < ActiveRecord::Base
   accepts_nested_attributes_for :scores, :reject_if => proc {|attributes| attributes["number"].blank? || attributes["par"].blank? || attributes["distance_in_ft"].blank? || attributes["shots"].blank?}
   
   validates_numericality_of :temperature, :allow_blank => true
+  validates_presence_of :course_id
+  validates_presence_of :user_id
   validate :not_bullshit_score
   
   def total_score
