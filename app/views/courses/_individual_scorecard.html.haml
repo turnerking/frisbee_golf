@@ -1,0 +1,27 @@
+.row
+  .score_labels
+    %p= "Distance"
+    %p= "Hole"
+    %p= "Par"
+    %p= "Shots"
+  - scorecard.scores.each do |score|
+    .score_fields
+      = text_field_tag :distance_in_ft, score.distance_in_ft, :disabled => true, :class => "score"
+      %br
+      = text_field_tag :number, score.number, :disabled => true, :class => "score"
+      %br
+      = text_field_tag :par, score.par, :disabled => true, :class => "score"
+      %br
+      = text_field_tag :shots, score.shots, :disabled => true, :class => "score"
+  .score_totals
+    %p= scorecard.total_distance
+    %p= "&nbsp;"
+    %p= scorecard.total_par
+    %p= scorecard.total_shots
+  .score_totals
+    %p= "&nbsp;"
+    %p= "&nbsp;"
+    %p= "+0"
+    %p= show_golf_score(scorecard.final_score)
+  .label= "&nbsp;"
+  .name= "On #{scorecard.played_at.to_formatted_s(:long_ordinal)} by #{scorecard.user.login}"

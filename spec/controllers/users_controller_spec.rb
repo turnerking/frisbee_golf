@@ -49,7 +49,18 @@ describe UsersController do
     end.should_not change(User, :count)
   end
   
+  describe "GET edit" do
+    it 'returns success' do
+      create_user
+      user = User.last
+      get :edit, :id => user.id
+      response.should be_success
+    end
+  end
   
+  describe "PUT update" do
+
+  end
   
   def create_user(options = {})
     post :create, :user => { :login => 'quire', :email => 'quire@example.com',

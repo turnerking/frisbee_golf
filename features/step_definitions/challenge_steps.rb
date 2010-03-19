@@ -8,7 +8,7 @@ end
 Given /^I am at a challenge at "([^\"]*)" involving everyone$/ do |course_name|
   users = User.all
   @course = create_course_with_holes(course_name)
-  @challenge = Challenge.create(:play_from => 2.days.ago, :play_to => 5.days.from_now, :submit_by => 7.days.from_now,
+  @challenge = Challenge.create(:play_from => 1.days.from_now, :play_to => 5.days.from_now, :submit_by => 7.days.from_now,
                                 :course_id => @course.id, :organizer_id => users[0].id, :user_ids => users.map(&:id))
   visit challenge_path(@challenge)
 end

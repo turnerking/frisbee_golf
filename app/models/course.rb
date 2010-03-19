@@ -12,7 +12,7 @@ class Course < ActiveRecord::Base
   validates_presence_of :name
   
   def recent_unique_reviews
-    @recent_reviews ||= Review.find(:all, :conditions => ["course_id = ? AND created_at > ?", self.id, 1.year.ago], :order => "created_at DESC")
+    @recent_reviews ||= reviews.find(:all, :conditions => ["created_at > ?", 1.year.ago])
   end
   
   def total_par
@@ -25,16 +25,32 @@ class Course < ActiveRecord::Base
   
   def course_quality
     course_quality_reviews = recent_unique_reviews.map(&:course_quality).compact
-    (((course_quality_reviews.sum / course_quality_reviews.size.to_f)*100.0).round)/100.0
+    round_rating_array(course_quality_reviews)
   end
   
   def community_difficulty
     difficulty_reviews = recent_unique_reviews.map(&:difficulty).compact
-    (((difficulty_reviews.sum / difficulty_reviews.size.to_f)*100.0).round)/100.0
+    round_rating_array(difficulty_reviews)
   end
   
   def community_tree_interference
     tree_interference_reviews = recent_unique_reviews.map(&:tree_interference).compact
-    (((tree_interference_reviews.sum / tree_interference_reviews.size.to_f)*100.0).round)/100.0
+    round_rating_array(tree_interference_reviews)
+  end
+  
+  def best_scores_from(play_from, play_to, number_to_return = 1)
+    all_scorecards = self.scorecards.find(:all, :conditions => ["played_at > ? AND played_at < ?", play_from, play_to])
+    if all_scorecards.empty?
+      []
+    else
+      all_scorecards.sort {|a,b| a.final_score <=> b.final_score}[0, number_to_return]
+    end
+  end
+  
+  private
+  
+  def round_rating_array(ratings)
+    return "N/A" if ratings.empty?
+    (((ratings.sum / ratings.size.to_f)*100.0).round)/100.0
   end
 end

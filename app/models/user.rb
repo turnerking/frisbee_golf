@@ -56,14 +56,22 @@ class User < ActiveRecord::Base
       f.users - Array.new(1, self)
     end.flatten
   end
+  
+  def friends_with?(user)
+    friends.include?(user)
+  end
 
-  def best_score_for(play_from, play_to, course_id)
+  def best_scores_for(play_from, play_to, course_id, number_to_return = 1)
     all_scorecards = self.scorecards.find(:all, :conditions => ["played_at > ? AND played_at < ? AND course_id = ?", play_from, play_to, course_id])
     if all_scorecards.empty?
-      nil
+      []
     else
-      all_scorecards.sort {|a,b| a.total_score <=> b.total_score}[0]
+      all_scorecards.sort {|a,b| a.final_score <=> b.final_score}[0, number_to_return]
     end
+  end
+  
+  def best_score_for(play_from, play_to, course_id, number_to_return = 1)
+    best_scores_for(play_from, play_to, course_id, number_to_return).first
   end
 
   protected

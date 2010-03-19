@@ -26,7 +26,10 @@ module NavigationHelpers
       new_admin_course_path
     when /the admin courses page/
       admin_courses_path
-    
+    when /^the profile page of (.+)/
+      user_path(User.find_by_login($1))
+    when /^the edit profile page of (.+)/
+      edit_user_path(User.find_by_login($1))    
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

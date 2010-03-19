@@ -2,9 +2,11 @@
 class SessionsController < ApplicationController
   # render new.rhtml
   def new
+    #redirect_to "/" and return if current_user
   end
 
   def create
+    #redirect_to "/" and return if current_user
     logout_keeping_session!
     user = User.authenticate(params[:login], params[:password])
     if user

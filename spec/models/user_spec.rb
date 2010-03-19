@@ -1,12 +1,40 @@
-# -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper'
-
-# Be sure to include AuthenticatedTestHelper in spec/spec_helper.rb instead.
-# Then, you can remove it from this and the functional test.
-include AuthenticatedTestHelper
 
 describe User do
   fixtures :users
+  
+  describe "best_scores_for" do    
+    it "returns empty array if no scorecards for time period on course" do
+      user = User.new
+      user.best_scores_for(7.days.ago, 1.day.ago, does_not_exist = 9999).should be_empty
+    end    
+  end
+  
+  describe "best_score_for" do
+    it "returns nil if best_scores_for is empty" do
+      user = User.new
+      user.best_score_for(7.days.ago, 1.day.ago, does_not_exist = 9999).should be_nil
+    end
+    
+    it "returns only scorecard from best_scores_for when there is one" do
+      user = User.new
+      scorecard = mock("scorecard", :final_score => 33)
+      user.should_receive(:scorecards).and_return(mock("scorecards", :find => [scorecard]))
+      user.best_score_for(7.days.ago, 1.day.ago, does_not_exist = 9999).should == scorecard
+    end
+    
+    it "returns only scorecard from best_scores_for when there is one" do
+      user = User.new
+      scorecard = mock("scorecard", :final_score => 33)
+      scorecard2 = mock("scorecard", :final_score => 2)
+      user.should_receive(:scorecards).and_return(mock("scorecards", :find => [scorecard, scorecard2]))
+      user.best_score_for(7.days.ago, 1.day.ago, does_not_exist = 9999).should == scorecard2
+    end
+  end
+  
+  describe "friends" do
+    
+  end
   
   describe 'in built-in restful auth specs' do
 

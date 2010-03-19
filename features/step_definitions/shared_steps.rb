@@ -22,7 +22,7 @@ Given /^I am logged in as an admin$/ do
 end
 
 Given /^I am logged in$/ do
-  user = User.create!(:name => "Golfer", :login => "golfer", :password => "abc123", :password_confirmation => "abc123", :email => "foobar@example.com")
+  user = User.create!(:name => "Golfer", :login => "golfer", :password => "abc123", :password_confirmation => "abc123", :email => "foobar@example.com", :age => 26, :gender => "Female")
   visit new_session_url
   fill_in("login", :with => "golfer")
   fill_in("password", :with => "abc123")
@@ -38,6 +38,10 @@ Given /^I am logged in with "(.*)" and "(.*)"$/ do |username, password|
   fill_in("login", :with => username)
   fill_in("password", :with => password)
   click_button("Log In")
+end
+
+Then /^I see the response$/ do
+  print response.body
 end
 
 def create_course_with_holes(course_name)

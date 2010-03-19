@@ -31,7 +31,7 @@
     .score_totals
       %p= "&nbsp;"
       %p= "&nbsp;"
-      %p= show_golf_score(@challenge.course.holes.sum('par'), @challenge.course.holes.sum('par'))
+      %p= "+0"
     
   #scoring_users
     - @challenge.leaderboard.each do |scorecard|
@@ -44,7 +44,7 @@
         .score_totals
           %p= scorecard.scores.sum('shots')
         .score_totals
-          %p= show_golf_score(scorecard.scores.sum('shots'), @challenge.course.holes.sum('par'))
+          %p= show_golf_score(scorecard.final_score)
       
 
   #non_scoring_users.row

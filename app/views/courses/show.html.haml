@@ -11,4 +11,20 @@
     = render :partial => "reviews/new" if current_user
 #right-column
   = render :partial => "scorecards/new", :locals => {:course => @course} if current_user
+  #score_tabs
+    %ul
+      %li= link_to "All-time Best", "#all-time"
+      %li= link_to "Best in Last 30 Days", "#last-month"
+      - if current_user
+        %li= link_to "My Best", "#my-best"
+    #all-time
+      = render :partial => "courses/individual_scorecard", :collection => @course.best_scores_from("2008-12-01", Time.now, 5), :as => :scorecard
+      .clear
+    #last-month
+      = render :partial => "courses/individual_scorecard", :collection => @course.best_scores_from(30.days.ago, Time.now, 5), :as => :scorecard
+      .clear
+    - if current_user
+      #my-best
+        = render :partial => "courses/individual_scorecard", :collection => current_user.best_scores_for("2008-12-01", Time.now, @course.id, 3), :as => :scorecard
+        .clear
 

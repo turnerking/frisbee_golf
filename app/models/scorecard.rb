@@ -13,7 +13,11 @@ class Scorecard < ActiveRecord::Base
   validates_presence_of :user_id
   validate :not_bullshit_score
   
-  def total_score
+  def final_score
+    total_shots - total_par
+  end
+  
+  def total_shots
     scores.map(&:shots).sum
   end
   
@@ -27,6 +31,6 @@ class Scorecard < ActiveRecord::Base
   
   def not_bullshit_score
     bull_shit = scores.map {|score| (score.par/2) + 1}.sum
-    self.errors.add_to_base("There's no way you got #{total_score} on a par #{total_par}") if total_score < bull_shit
+    self.errors.add_to_base("There's no way you got #{total_shots} on a par #{total_par}") if total_shots < bull_shit
   end
 end

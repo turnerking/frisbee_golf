@@ -32,5 +32,10 @@ $(document).ready(function() {
 	if($("div.notice, div.error")) {
 		setTimeout("$(\"div.notice, div.error\").slideUp(500)", 2000);
 	}
+	if($("#score_tabs")) {
+		$("#score_tabs").tabs();
+	}
 });
+
+
 

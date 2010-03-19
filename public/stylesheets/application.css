@@ -73,6 +73,9 @@ hr {
   #footer p {
     margin: 0px; }
 
+.clear {
+  clear: both; }
+
 
 .row {
   margin: 2px 0px;
@@ -88,9 +91,9 @@ hr {
     float: left;
     text-align: right;
     margin-right: 10px; }
-  .row #scorecard_submit {
+  .row #scorecard_submit, .row .wide_label_submit {
     margin-left: 125px; }
-  .row #review_submit {
+  .row #review_submit, .row .small_label_submit {
     margin-left: 70px; }
   .row input.integer {
     width: 60px; }
@@ -167,6 +170,9 @@ hr {
 #new_review {
   margin-top: 10px; }
 
+#my-best .row, #all-time .row, #last-month .row {
+  margin-bottom: 20px; }
+
 
 #content_box {
   margin-left: 125px;
@@ -194,8 +200,11 @@ hr {
 
 
 .friend-request, .friend-possibility {
-  width: 250px;
-  height: 50px; }
+  width: 219px;
+  float: left;
+  margin: 10px;
+  padding: 10px;
+  border: 3px dotted #004400; }
   .friend-request .info, .friend-possibility .info {
     float: left; }
   .friend-request .button, .friend-possibility .button {

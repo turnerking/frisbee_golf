@@ -8,10 +8,10 @@ module Authentication
         
         # Virtual attribute for the unencrypted password
         attr_accessor :password
-        validates_presence_of     :password,                   :if => :password_required?
-        validates_presence_of     :password_confirmation,      :if => :password_required?
-        validates_confirmation_of :password,                   :if => :password_required?
-        validates_length_of       :password, :within => 6..40, :if => :password_required?
+        validates_presence_of     :password,                   :if => :password_required? || :password_updated?
+        validates_presence_of     :password_confirmation,      :if => :password_required? || :password_updated?
+        validates_confirmation_of :password,                   :if => :password_required? || :password_updated?
+        validates_length_of       :password, :within => 6..40, :if => :password_required? || :password_updated?
         before_save :encrypt_password
       end
     end # #included directives
@@ -58,6 +58,9 @@ module Authentication
       end
       def password_required?
         crypted_password.blank? || !password.blank?
+      end
+      def password_updated?
+        defined?(params[:user][:password]) || defined?(params[:user][:password_confirmation])
       end
     end # instance methods
   end

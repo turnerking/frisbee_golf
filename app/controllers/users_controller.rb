@@ -3,12 +3,14 @@ class UsersController < ApplicationController
   def index
     @users = User.find(:all, :conditions => ["login LIKE ? OR name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%"])
   end
-  # render new.rhtml
+
   def new
+    #redirect_to user_path(current_user) and return if current_user
     @user = User.new
   end
  
   def create
+    #redirect_to user_path(current_user) and return if current_user
     logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
@@ -28,9 +30,30 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    unless current_user && (current_user == @user || @user.friends.include?(current_user))
+    unless current_user && (current_user == @user || @user.friends_with?(current_user))
       flash[:error] = "You don't have access to this page"
       redirect_to "/" and return
+    end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+    unless current_user && (current_user == @user)
+      flash[:error] = "You don't have access to this page"
+      redirect_to "/" and return
+    end
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    unless current_user && (current_user == @user)
+      flash[:error] = "You don't have access to this page"
+      redirect_to "/" and return
+    end
+    if @user.update_attributes(params[:user])
+      redirect_to user_path(@user)
+    else
+      render :template => "users/edit"
     end
   end
 end

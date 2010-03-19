@@ -3,7 +3,7 @@ Feature: Home Page
   the user
   wants a home page
 
-	Scenario:
+	Scenario: Shows all existing courses
 		Given the following courses:
       |name           |
       |O'Brien Park   |
