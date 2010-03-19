@@ -14,6 +14,16 @@ class Admin::CoursesController < ApplicationController
     redirect_to admin_courses_path
   end
   
+  def edit
+    @course = Course.find(params[:id])
+  end
+  
+  def update
+    @course = Course.find(params[:id])
+    @course.update_attributes(params[:course])
+    redirect_to admin_courses_path
+  end
+  
   def destroy
     course = Course.find(params[:id])
     course.destroy

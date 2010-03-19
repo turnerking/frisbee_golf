@@ -29,7 +29,9 @@ module NavigationHelpers
     when /^the profile page of (.+)/
       user_path(User.find_by_login($1))
     when /^the edit profile page of (.+)/
-      edit_user_path(User.find_by_login($1))    
+      edit_user_path(User.find_by_login($1))
+    when /^the edit page for (.+)/
+      edit_admin_course_path(Course.find_by_name($1))  
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

@@ -43,6 +43,22 @@ Feature: Manage courses
     And I press "Create"
 		Then I should see the following courses:
 			|Woodridge|
+			
+	Scenario: Edit course in admin
+	  Given the following courses:
+      |name           |
+      |Oak Brook      |
+    And I am logged in as an admin
+    And I am on the edit page for Oak Brook
+    When I fill in "Name" with "Oak Brook Park"
+		And I fill in "Address" with "123 Jump St."
+		And I select "Gravel" from "Tee Type"
+		And I select "3" from "Difficulty"
+		And I select "4" from "Tree Interference"
+		And I select "Basket" from "Hole Type"
+    And I press "Update"
+		Then I should see the following courses:
+			|Oak Brook Park| 
 
   Scenario: Delete course in admin
     Given the following courses:

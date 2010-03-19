@@ -3,4 +3,7 @@
     %div= course.name
   .row
     %div= course.address
-  = link_to "Delete", admin_course_path(course), :method => :delete
+  .row
+    = link_to "Edit", edit_admin_course_path(course)
+    = "&nbsp;|&nbsp;"
+    = link_to "Delete", admin_course_path(course), :method => :delete

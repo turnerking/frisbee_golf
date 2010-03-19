@@ -1,0 +1,35 @@
+- form_for @course, :url => admin_course_path(@course) do |f|
+  .field_row
+    = f.label :name
+    = f.text_field :name
+  .field_row
+    = f.label :address
+    = f.text_field :address
+  .field_row
+    = f.label :tee_type
+    = f.select :tee_type, Course::TEE_TYPES
+  .field_row
+    = f.label :difficulty
+    = f.select :difficulty, (1..5)
+  .field_row
+    = f.label :tree_interference
+    = f.select :tree_interference, (1..5)
+  .field_row
+    = f.label :hole_type
+    = f.select :hole_type, Course::HOLE_TYPES
+  #holes
+    - @course.holes.each do |hole|
+      - f.fields_for :holes, hole do |hole_fields|
+        .hole_fields
+          .field_row
+            = hole_fields.label :number, "No."
+            = hole_fields.text_field :number
+          .field_row
+            = hole_fields.label :par
+            = hole_fields.text_field :par
+          .field_row
+            = hole_fields.label :distance_in_ft, "Distance (ft)"
+            = hole_fields.text_field :distance_in_ft
+  = link_to "Add Hole", "#", :id => "add_hole", :onclick => "add_hole();"
+  .field_row
+    = f.submit "Update"
