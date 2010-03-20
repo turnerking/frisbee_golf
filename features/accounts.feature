@@ -16,7 +16,7 @@ Story: Creating an account
     When  she goes to /signup
     Then  she should be at the 'users/new' page
      And  the page should look AWESOME
-     And  she should see a <form> containing a textfield: Login, textfield: Email, password: Password, password: 'Confirm Password', submit: 'Sign up'
+     And  she should see a <form> containing a textfield: Name, textfield: Login, textfield: Email, password: Password, password: 'Password confirmation', submit: 'Sign up'
 
   #
   # Account Creation
@@ -45,7 +45,7 @@ Story: Creating an account
      And  we try hard to remember the user's updated_at, and created_at
     When  she registers an account with login: 'reggie', password: 'monkey', and email: 'reggie@example.com'
     Then  she should be at the 'users/new' page
-     And  she should     see an errorExplanation message 'Login has already been taken'
+     And  I should see "Login has already been taken"
      And  she should not see an errorExplanation message 'Email has already been taken'
      And  a user with login: 'reggie' should exist
      And  the user should have email: 'registered@example.com'
@@ -62,7 +62,7 @@ Story: Creating an account
      And  no user with login: 'Oona' exists
     When  she registers an account with login: '',     password: 'monkey', password_confirmation: 'monkey' and email: 'unactivated@example.com'
     Then  she should be at the 'users/new' page
-     And  she should     see an errorExplanation message 'Login can't be blank'
+     And  I should see "Login can't be blank"
      And  no user with login: 'oona' should exist
 
   Scenario: Anonymous user can not create an account with no password
@@ -70,7 +70,7 @@ Story: Creating an account
      And  no user with login: 'Oona' exists
     When  she registers an account with login: 'oona', password: '',       password_confirmation: 'monkey' and email: 'unactivated@example.com'
     Then  she should be at the 'users/new' page
-     And  she should     see an errorExplanation message 'Password can't be blank'
+     And  I should see "Password can't be blank"
      And  no user with login: 'oona' should exist
 
   Scenario: Anonymous user can not create an account with no password_confirmation
@@ -78,7 +78,7 @@ Story: Creating an account
      And  no user with login: 'Oona' exists
     When  she registers an account with login: 'oona', password: 'monkey', password_confirmation: ''       and email: 'unactivated@example.com'
     Then  she should be at the 'users/new' page
-     And  she should     see an errorExplanation message 'Password confirmation can't be blank'
+     And  I should see "Password Confirmation can't be blank"
      And  no user with login: 'oona' should exist
 
   Scenario: Anonymous user can not create an account with mismatched password & password_confirmation
@@ -86,7 +86,7 @@ Story: Creating an account
      And  no user with login: 'Oona' exists
     When  she registers an account with login: 'oona', password: 'monkey', password_confirmation: 'monkeY' and email: 'unactivated@example.com'
     Then  she should be at the 'users/new' page
-     And  she should     see an errorExplanation message 'Password doesn't match confirmation'
+     And  I should see "Password doesn't match confirmation"
      And  no user with login: 'oona' should exist
 
   Scenario: Anonymous user can not create an account with bad email
@@ -94,7 +94,7 @@ Story: Creating an account
      And  no user with login: 'Oona' exists
     When  she registers an account with login: 'oona', password: 'monkey', password_confirmation: 'monkey' and email: ''
     Then  she should be at the 'users/new' page
-     And  she should     see an errorExplanation message 'Email can't be blank'
+     And  I should see "Email can't be blank"
      And  no user with login: 'oona' should exist
     When  she registers an account with login: 'oona', password: 'monkey', password_confirmation: 'monkey' and email: 'unactivated@example.com'
     Then  she should be redirected to the home page

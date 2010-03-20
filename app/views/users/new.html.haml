@@ -1,27 +1,43 @@
 %h1= "Sign up as a new user"
 - @user.password = @user.password_confirmation = nil
 
-= error_messages_for :user
+- unless @user.errors.empty?
+  .formError= "There were problems with your user information:"
 - form_for :user, :url => users_path do |f|
-  %p
-    = label_tag 'login'
-    %br
+  .row
+    = f.label :name
+    = f.text_field :name
+  = error_message_on @user, :name, :prepend_text => "Name "
+  .row
+    = f.label :login
     = f.text_field :login
-
-  %p
-    = label_tag 'email'
-    %br
+  = error_message_on @user, :login, :prepend_text => "Login "
+  .row
+    = f.label :email
     = f.text_field :email
-
-  %p
-    = label_tag 'password'
-    %br
+  = error_message_on @user, :email, :prepend_text => "Email "
+  .row
+    = f.label :password
     = f.password_field :password
-
-  %p
-    = label_tag 'password_confirmation', 'Confirm Password'
-    %br
+    = error_message_on @user, :password, :prepend_text => "Password "
+  .row
+    = f.label :password_confirmation
     = f.password_field :password_confirmation
-
-  %p
-    = submit_tag 'Sign up'
+  = error_message_on @user, :password_confirmation, :prepend_text => "Password Confirmation "
+  .row
+    = f.label :state
+    = f.text_field :state
+  = error_message_on @user, :state, :prepend_text => "State "
+  .row
+    = f.label :age
+    = f.text_field :age, :class => "integer"
+  = error_message_on @user, :age, :prepend_text => "Age "
+  .row
+    = f.label :gender
+    = f.radio_button :gender, "M"
+    = "Male"
+    = f.radio_button :gender, "F"
+    = "Female"
+  = error_message_on @user, :gender, :prepend_text => "Gender "
+  .row
+    = f.submit "Sign up", :class => "wide_label_submit"
