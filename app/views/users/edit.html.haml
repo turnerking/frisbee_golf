@@ -34,9 +34,9 @@
       = f.text_field :state
     = error_message_on @user, :state, :prepend_text => "State "
     .row
-      = f.label :age
-      = f.text_field :age, :class => "integer"
-    = error_message_on @user, :age, :prepend_text => "Age "
+      = f.label :birth_date
+      = f.date_select :birth_date, :class => "integer"
+    = error_message_on @user, :birth_date, :prepend_text => "Birth Date "
     .row
       = f.label :gender
       = f.radio_button :gender, "M"

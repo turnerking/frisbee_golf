@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :gender, :age, :state
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :gender, :birth_date, :age, :state
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
@@ -72,6 +72,15 @@ class User < ActiveRecord::Base
   
   def best_score_for(play_from, play_to, course_id, number_to_return = 1)
     best_scores_for(play_from, play_to, course_id, number_to_return).first
+  end
+  
+  def age
+    return nil unless birth_date
+    ((Time.now - birth_date.at_beginning_of_day)/(60*60*24*365)).floor
+  end
+  
+  def age=(number)
+    write_attribute(:birth_date, Time.now.years_ago(number.to_i))
   end
 
   protected

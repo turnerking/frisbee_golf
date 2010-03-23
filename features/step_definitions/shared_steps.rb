@@ -22,7 +22,7 @@ Given /^I am logged in as an admin$/ do
 end
 
 Given /^I am logged in$/ do
-  user = User.create!(:name => "Golfer", :login => "golfer", :password => "abc123", :password_confirmation => "abc123", :email => "foobar@example.com", :age => 26, :gender => "Female")
+  user = User.create!(:name => "Golfer", :login => "golfer", :password => "abc123", :password_confirmation => "abc123", :email => "foobar@example.com", :birth_date => 26.years.ago.to_date, :gender => "Female")
   visit new_session_url
   fill_in("login", :with => "golfer")
   fill_in("password", :with => "abc123")
