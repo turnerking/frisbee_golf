@@ -3,6 +3,37 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe User do
   fixtures :users
   
+  describe "best_scores_for_friends" do
+    it "returns empty array if user has no friends" do
+      user = User.new
+      user.best_scores_for_friends(7.days.ago, 1.day.ago, does_not_exist = 9999).should be_empty
+    end
+    
+    it "returns empty array if no scorecards for time period on course" do
+      user = User.new
+      user.stub!(:friends_ids).and_return([6])
+      user.best_scores_for_friends(7.days.ago, 1.day.ago, does_not_exist = 9999).should be_empty
+    end
+    
+    it "returns a sorted array if there are scorecard for a time period on course" do
+      user = User.new
+      user.stub!(:friends_ids).and_return([6,8])
+      scorecard = mock("scorecard", :final_score => 33)
+      scorecard2 = mock("scorecard", :final_score => 2)
+      Scorecard.stub!(:find).and_return([scorecard, scorecard2])
+      user.best_scores_for_friends(7.days.ago, 1.day.ago, does_not_exist = 9999, to_return = 2).should == [scorecard2, scorecard]
+    end
+    
+    it "returns a cut-off sorted array if there are more scorecards than needed for a time period on course" do
+      user = User.new
+      user.stub!(:friends_ids).and_return([6,8])
+      scorecard = mock("scorecard", :final_score => 33)
+      scorecard2 = mock("scorecard", :final_score => 2)
+      Scorecard.stub!(:find).and_return([scorecard, scorecard2])
+      user.best_scores_for_friends(7.days.ago, 1.day.ago, does_not_exist = 9999, to_return = 1).should == [scorecard2]
+    end
+  end
+  
   describe "best_scores_for" do    
     it "returns empty array if no scorecards for time period on course" do
       user = User.new
@@ -23,7 +54,7 @@ describe User do
       user.best_score_for(7.days.ago, 1.day.ago, does_not_exist = 9999).should == scorecard
     end
     
-    it "returns only scorecard from best_scores_for when there is one" do
+    it "returns only one scorecard from best_scores_for that is the best score" do
       user = User.new
       scorecard = mock("scorecard", :final_score => 33)
       scorecard2 = mock("scorecard", :final_score => 2)

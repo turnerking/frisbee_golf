@@ -30,7 +30,7 @@
   = error_message_on @user, :state, :prepend_text => "State "
   .row
     = f.label :birth_date
-    = f.date_select :birth_date
+    = f.date_select :birth_date, :start_year => 100.years.ago.year, :end_year => Time.now.year, :default => 18.years.ago
   = error_message_on @user, :birth_date, :prepend_text => "Birth Date "
   .row
     = f.label :gender

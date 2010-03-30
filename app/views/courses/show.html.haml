@@ -14,8 +14,9 @@
   #score_tabs
     %ul
       %li= link_to "All-time Best", "#all-time"
-      %li= link_to "Best in Last 30 Days", "#last-month"
+      %li= link_to "Best Last Month", "#last-month"
       - if current_user
+        %li= link_to "Friends' Best", "#my-network"
         %li= link_to "My Best", "#my-best"
     #all-time
       = render :partial => "courses/individual_scorecard", :collection => @course.best_scores_from("2008-12-01", Time.now, 5), :as => :scorecard
@@ -24,6 +25,9 @@
       = render :partial => "courses/individual_scorecard", :collection => @course.best_scores_from(30.days.ago, Time.now, 5), :as => :scorecard
       .clear
     - if current_user
+      #my-network
+        = render :partial => "courses/individual_scorecard", :collection => current_user.best_scores_for_friends("2008-12-01", Time.now, @course.id, 5), :as => :scorecard
+        .clear
       #my-best
         = render :partial => "courses/individual_scorecard", :collection => current_user.best_scores_for("2008-12-01", Time.now, @course.id, 3), :as => :scorecard
         .clear

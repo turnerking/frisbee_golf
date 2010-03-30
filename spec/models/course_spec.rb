@@ -78,27 +78,43 @@ describe Course do
         sleep(1)
         review3 = Review.create(:course => @course)
         @course.recent_unique_reviews.should == [review3, review2, review1]
-      end
-      
+      end      
       
       context "derived statisitics" do
-        before :each do
-          Review.create(:tree_interference => 2, :difficulty => 3, :course_quality => 5, :course => @course)
-          Review.create(:tree_interference => 1, :difficulty => 2, :course_quality => 3, :course => @course)
-          Review.create(:tree_interference => 2, :difficulty => 4, :course_quality => 5, :course => @course)
+        context "without any reviews" do
+          it "returns the community course quality" do
+            @course.course_quality.should == "N/A"
+          end
+        
+          it "returns the community difficulty rating" do
+            @course.community_difficulty.should == "N/A"
+          end
+        
+          it "returns the community tree interference" do
+            @course.community_tree_interference.should == "N/A"
+          end
         end
         
-        it "returns the community course quality" do
-          @course.course_quality.should == 4.33
+        context "with completed reviews" do
+          before :each do
+            Review.create(:tree_interference => 2, :difficulty => 3, :course_quality => 5, :course => @course)
+            Review.create(:tree_interference => 1, :difficulty => 2, :course_quality => 3, :course => @course)
+            Review.create(:tree_interference => 2, :difficulty => 4, :course_quality => 5, :course => @course)
+          end
+        
+          it "returns the community course quality" do
+            @course.course_quality.should == 4.33
+          end
+        
+          it "returns the community difficulty rating" do
+            @course.community_difficulty.should == 3
+          end
+        
+          it "returns the community tree interference" do
+            @course.community_tree_interference.should == 1.67
+          end
         end
         
-        it "returns the community difficulty rating" do
-          @course.community_difficulty.should == 3
-        end
-        
-        it "returns the community tree interference" do
-          @course.community_tree_interference.should == 1.67
-        end
       end
     end
   end
