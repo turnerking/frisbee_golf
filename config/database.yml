@@ -19,6 +19,7 @@ development:
   encoding: utf8
   database: frisbee_golf_development
   username: root
+  password: p@ssw0rd
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,6 +29,7 @@ test: &TEST
   encoding: utf8
   database: frisbee_golf_test
   username: root
+  password: p@ssw0rd
 
 production:
   adapter: mysql

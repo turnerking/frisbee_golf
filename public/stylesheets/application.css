@@ -82,7 +82,6 @@ hr {
 
 .row {
   margin: 2px 0px;
-  min-height: 22px;
   clear: left; }
   .row .label, .row label {
     width: 120px;
@@ -103,6 +102,12 @@ hr {
     width: 60px; }
   .row .info {
     margin-left: 130px; }
+
+.row.form-input {
+  min-height: 22px; }
+
+.row.model-content {
+  min-height: 19px; }
 
 
 .formError {
@@ -131,8 +136,7 @@ hr {
   padding: 5px 5px 5px 10px;
   display: inline-block;
   width: 510px;
-  vertical-align: top;
-  border-left: thin solid #888; }
+  vertical-align: top; }
 
 #scorecard .row {
   margin-bottom: 5px; }
@@ -156,7 +160,8 @@ hr {
 
 .score {
   margin: 0;
-  width: 30px; }
+  width: 30px;
+  height: 22px; }
 
 #reviews h3 {
   margin-bottom: 5px; }
@@ -181,7 +186,7 @@ hr {
 
 #content_box {
   margin-left: 125px;
-  height: 252px;
+  height: 240px;
   width: 765px;
   overflow: auto; }
   #content_box .friend_with_checkbox {
@@ -190,7 +195,7 @@ hr {
     margin: 10px;
     padding: 10px;
     border: 3px dotted #004400; }
-    #content_box .friend_with_checkbox .info {
+    #content_box .friend_with_checkbox .user-blurb {
       display: inline-block; }
     #content_box .friend_with_checkbox input {
       float: right;
@@ -210,7 +215,7 @@ hr {
   margin: 10px;
   padding: 10px;
   border: 3px dotted #004400; }
-  .friend-request .info, .friend-possibility .info {
+  .friend-request .user-blurb, .friend-possibility .user-blurb {
     float: left; }
   .friend-request .button, .friend-possibility .button {
     float: right;

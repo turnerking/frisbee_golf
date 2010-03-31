@@ -1,17 +1,17 @@
 #leaderboard
-  .row
+  .row.model-content
     .label= "Course"
     .name= Course.find(@challenge.course_id).name
-  .row
+  .row.model-content
     .label= "Organizer"
     .name= User.find(@challenge.organizer_id).name
-  .row
+  .row.model-content
     .label= "Play time"
     .name= "#{@challenge.play_from.to_formatted_s(:long_ordinal)} - #{@challenge.play_to.to_formatted_s(:long_ordinal)  }"
-  .row
+  .row.model-content
     .label= "Submit by"
     .name= @challenge.submit_by.to_formatted_s(:long_ordinal)
-  #scores.row
+  #scores.row.model-content
     .score_labels
       %p= "Distance"
       %p= "Hole"
@@ -35,7 +35,7 @@
     
   #scoring_users
     - @challenge.leaderboard.each do |scorecard|
-      .row
+      .row.model-content
         .score_labels
           %p= scorecard.user.name
         - scorecard.scores.each do |score|
@@ -47,7 +47,7 @@
           %p= show_golf_score(scorecard.final_score)
       
 
-  #non_scoring_users.row
+  #non_scoring_users.row.model-content
     .score_labels
       - @challenge.non_scoring_users.each do |user|
         %p= user.name

@@ -1,9 +1,9 @@
 .course
-  .row
+  .row.model-content
     %div= course.name
-  .row
+  .row.model-content
     %div= course.address
-  .row
+  .row.model-content
     = link_to "Edit", edit_admin_course_path(course)
     = "&nbsp;|&nbsp;"
     = link_to "Delete", admin_course_path(course), :method => :delete

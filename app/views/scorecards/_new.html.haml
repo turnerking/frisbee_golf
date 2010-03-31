@@ -5,23 +5,23 @@
   - form_for @scorecard do |f|
     = hidden_field_tag "scorecard[course_id]", course.id
     = hidden_field_tag "scorecard[user_id]", current_user.id
-    .row
+    .row.form-input
       = f.label :weather
       = f.select :weather, Scorecard::WEATHER_CONDITIONS
-    .row
+    .row.form-input
       = f.label :temperature
       = f.text_field :temperature, :class => "integer"
     = error_message_on @scorecard, :temperature, :prepend_text => "Temperature "
-    .row
+    .row.form-input
       = f.label :ground_conditions
       = f.select :ground_conditions, Scorecard::GROUND_CONDITIONS
-    .row
+    .row.form-input
       = f.label :played_at
       = f.datetime_select :played_at, :use_short_month => true
-    .row
+    .row.form-input
       = f.label :hours_to_play
       = f.text_field :hours_to_play, :class => "integer"
-    #scores.row
+    #scores.row.form-input
       .score_labels
         %p= "Distance"
         %p= "Hole"
@@ -46,8 +46,8 @@
         %p= course.holes.sum('par')
         %p.shot_total= 0
     = error_message_on @scorecard, :base
-    .row
+    .row.form-input
       = f.label :notes, "Round Notes"
       = f.text_area :notes, :rows => 5
-    .row
+    .row.form-input
       = f.submit "Submit Round"

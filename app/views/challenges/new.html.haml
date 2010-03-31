@@ -1,25 +1,25 @@
 - form_for :challenge, @challenge, :url => course_challenges_path(:course_id => @challenge.course_id) do |f|
   = f.hidden_field :course_id
   = f.hidden_field :organizer_id
-  .row
+  .row.model-content
     .label= "Course"
     .name= Course.find(@challenge.course_id).name
-  .row
+  .row.model-content
     .label= "Organizer"
     .name= User.find(@challenge.organizer_id).name
-  .row
+  .row.form-input
     = f.label :play_from
     = f.datetime_select :play_from, :use_short_month => true
-  .row
+  .row.form-input
     = f.label :play_to
     = f.datetime_select :play_to, :use_short_month => true, :default => 7.days.from_now
-  .row
+  .row.form-input
     = f.label :submit_by
     = f.datetime_select :submit_by, :use_short_month => true, :default => 9.days.from_now
-  .row
+  .row.form-input
     = hidden_field_tag "challenge[user_ids][]", current_user.id, :id => "challenge_user_id_#{current_user.id}"
     = f.label :participants
     #content_box
       = render :partial => "participant", :collection => current_user.friends, :as => :user
-  .row
+  .row.form-input
     = f.submit "Start Challenge"

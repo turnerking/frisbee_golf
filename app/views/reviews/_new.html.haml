@@ -1,7 +1,7 @@
 - form_for :review, @review, :url => reviews_path, :html => {:id => "new_review"} do |f|
   = f.hidden_field :course_id
   = f.hidden_field :user_id
-  .row
+  .row.form-input
     = f.label :difficulty
     = f.radio_button :difficulty, 1
     = "1"
@@ -13,7 +13,7 @@
     = "4"
     = f.radio_button :difficulty, 5
     = "5"
-  .row
+  .row.form-input
     = f.label :tree_interference
     = f.radio_button :tree_interference, 1
     = "1"
@@ -25,7 +25,7 @@
     = "4"
     = f.radio_button :tree_interference, 5
     = "5"
-  .row
+  .row.form-input
     = f.label :course_quality
     = f.radio_button :course_quality, 1
     = "1"
@@ -37,8 +37,8 @@
     = "4"
     = f.radio_button :course_quality, 5
     = "5"
-  .row
+  .row.form-input
     = f.label :body
     = f.text_area :body, :rows => 5
-  .row
+  .row.form-input
     = f.submit "Submit Review"
