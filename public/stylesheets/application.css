@@ -10,7 +10,9 @@ a:hover {
   text-decoration: underline; }
 
 h3 {
-  font-family: Arial; }
+  font-family: Arial;
+  font-size: 18px;
+  margin-bottom: 18px; }
 
 hr {
   width: 50%; }
@@ -59,6 +61,7 @@ hr {
   margin-top: 53px;
   text-align: right;
   margin-right: 75px;
+  margin-bottom: 35px;
   font-size: 52px;
   font-style: italic;
   font-family: Arial;
@@ -79,6 +82,7 @@ hr {
 
 .row {
   margin: 2px 0px;
+  min-height: 22px;
   clear: left; }
   .row .label, .row label {
     width: 120px;
@@ -127,7 +131,8 @@ hr {
   padding: 5px 5px 5px 10px;
   display: inline-block;
   width: 510px;
-  vertical-align: top; }
+  vertical-align: top;
+  border-left: thin solid #888; }
 
 #scorecard .row {
   margin-bottom: 5px; }
