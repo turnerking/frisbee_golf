@@ -22,14 +22,14 @@
       = f.label :hours_to_play
       = f.text_field :hours_to_play, :class => "integer"
     #scores.row.form-input
-      .score_labels
+      .score-labels
         %p= "Distance"
         %p= "Hole"
         %p= "Par"
         %p= "Score"
       - course.holes.each do |hole|
         - f.fields_for :scores, Score.new do |score_fields|
-          .score_fields
+          .score-fields
             = score_fields.hidden_field :distance_in_ft, :value => hole.distance_in_ft
             = score_fields.text_field :distance_in_ft, :value => hole.distance_in_ft, :disabled => true, :class => "score"
             %br
@@ -40,7 +40,7 @@
             = score_fields.text_field :par, :value => hole.par, :disabled => true, :class => "score"
             %br
             = score_fields.text_field :shots, :class => "score shots"
-      .score_totals
+      .score-totals
         %p= course.holes.sum('distance_in_ft')
         %p= "&nbsp;"
         %p= course.holes.sum('par')

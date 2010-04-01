@@ -13,6 +13,11 @@
     = "4"
     = f.radio_button :difficulty, 5
     = "5"
+  .row.under_input
+    %p.legend
+      %span= "Easy <-"
+      %span=  "-".center(34, " - ")
+      %span= "-> Hard"
   .row.form-input
     = f.label :tree_interference
     = f.radio_button :tree_interference, 1
@@ -25,6 +30,11 @@
     = "4"
     = f.radio_button :tree_interference, 5
     = "5"
+  .row.under_input
+    %p.legend
+      %span= "Less <-"
+      %span=  "-".center(34, " - ")
+      %span= "-> More"
   .row.form-input
     = f.label :course_quality
     = f.radio_button :course_quality, 1
@@ -37,6 +47,11 @@
     = "4"
     = f.radio_button :course_quality, 5
     = "5"
+  .row.under_input
+    %p.legend
+      %span= "Worse <-"
+      %span=  "-".center(31, " - ")
+      %span= "-> Better"
   .row.form-input
     = f.label :body
     = f.text_area :body, :rows => 5

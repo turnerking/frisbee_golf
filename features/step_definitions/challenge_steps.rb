@@ -33,10 +33,10 @@ Then /^"([^\"]*)" do(?:es|) not have a challenge$/ do |user_names|
 end
 
 Then /^I should see the users have not submitted a score$/ do
-  response.body.should have_tag("#non_scoring_users") do
+  response.body.should have_tag("#non-scoring-users") do
     User.all.each do |user|
-      with_tag(".score_labels p", :text => user.name)
-      with_tag(".score_totals p", :text => "Score has not been submitted")
+      with_tag(".score-labels p", :text => user.name)
+      with_tag(".score-totals p", :text => "Score has not been submitted")
     end
   end
 end

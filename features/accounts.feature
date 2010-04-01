@@ -16,7 +16,7 @@ Story: Creating an account
     When  she goes to /signup
     Then  she should be at the 'users/new' page
      And  the page should look AWESOME
-     And  she should see a <form> containing a textfield: Name, textfield: Login, textfield: Email, password: Password, password: 'Password confirmation', submit: 'Sign up'
+     And  she should see a <form> containing a textfield: Name, textfield: Login, textfield: Email, password: Password, password: 'Confirm Password', submit: 'Sign up'
 
   #
   # Account Creation

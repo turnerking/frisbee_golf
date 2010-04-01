@@ -1,15 +1,13 @@
-%h1= "Log In"
+%h3= "Log In"
 
 - form_tag session_path do
-  %p
+  .row.form-input
     = label_tag 'login'
-    %br
     = text_field_tag 'login', @login
 
-  %p
+  .row.form-input
     = label_tag 'password'
-    %br
     = password_field_tag 'password', nil
 
-  %p
-    = submit_tag 'Log in'
+  .row.form-input
+    = submit_tag 'Log in', :id => "login-button", :class => "wide-label-submit"

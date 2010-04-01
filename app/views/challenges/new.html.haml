@@ -19,7 +19,7 @@
   .row.form-input
     = hidden_field_tag "challenge[user_ids][]", current_user.id, :id => "challenge_user_id_#{current_user.id}"
     = f.label :participants
-    #content_box
+    #content-box
       = render :partial => "participant", :collection => current_user.friends, :as => :user
   .row.form-input
     = f.submit "Start Challenge"

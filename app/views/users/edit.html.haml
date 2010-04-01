@@ -11,7 +11,7 @@
       = f.password_field :password_confirmation
     = error_message_on @user, :password_confirmation, :prepend_text => "Password Confirmation "
     .row.form-input
-      = f.submit "Update Password", :class => "wide_label_submit"
+      = f.submit "Update Password", :class => "wide-label-submit"
 
 %div
   - unless @user.errors.empty?
@@ -45,4 +45,4 @@
       = "Female"
     = error_message_on @user, :gender, :prepend_text => "Gender "
     .row.form-input
-      = f.submit "Update Profile", :class => "wide_label_submit"
+      = f.submit "Update Profile", :class => "wide-label-submit"

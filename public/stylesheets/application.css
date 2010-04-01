@@ -57,7 +57,7 @@ hr {
     margin-bottom: 10px;
     float: left; }
 
-#home_title {
+#home-title {
   margin-top: 53px;
   text-align: right;
   margin-right: 75px;
@@ -66,7 +66,7 @@ hr {
   font-style: italic;
   font-family: Arial;
   border-bottom: thin solid #888; }
-  #home_title a {
+  #home-title a {
     text-decoration: none; }
 
 #footer {
@@ -82,6 +82,7 @@ hr {
 
 .row {
   margin: 2px 0px;
+  min-height: 22px;
   clear: left; }
   .row .label, .row label {
     width: 120px;
@@ -89,25 +90,19 @@ hr {
     clear: left;
     text-align: right;
     margin-right: 5px; }
-  .row .small_label {
+  .row .small-label {
     width: 65px;
     float: left;
     text-align: right;
     margin-right: 10px; }
-  .row #scorecard_submit, .row .wide_label_submit {
+  .row #scorecard_submit, .row .wide-label-submit {
     margin-left: 125px; }
-  .row #review_submit, .row .small_label_submit {
+  .row #review_submit, .row .small-label_submit {
     margin-left: 70px; }
   .row input.integer {
     width: 60px; }
   .row .info {
     margin-left: 130px; }
-
-.row.form-input {
-  min-height: 22px; }
-
-.row.model-content {
-  min-height: 19px; }
 
 
 .formError {
@@ -141,27 +136,26 @@ hr {
 #scorecard .row {
   margin-bottom: 5px; }
 
-.score_labels, .score_totals, .score_fields {
+.score-labels, .score-totals, .score-fields {
   float: left;
   margin-bottom: 5px; }
-  .score_labels p, .score_totals p, .score_fields p {
+  .score-labels p, .score-totals p, .score-fields p {
     margin: 0px 5px;
     line-height: 22px; }
 
-.score_labels p {
+.score-labels p {
   width: 115px;
   text-align: right; }
 
-.score_fields {
+.score-fields {
   width: 30px; }
 
-.score_totals {
+.score-totals {
   min-width: 40px; }
 
 .score {
   margin: 0;
-  width: 30px;
-  height: 22px; }
+  width: 30px; }
 
 #reviews h3 {
   margin-bottom: 5px; }
@@ -184,20 +178,20 @@ hr {
   margin-bottom: 20px; }
 
 
-#content_box {
+#content-box {
   margin-left: 125px;
   height: 240px;
   width: 765px;
   overflow: auto; }
-  #content_box .friend_with_checkbox {
+  #content-box .friend_with_checkbox {
     float: left;
     width: 204px;
     margin: 10px;
     padding: 10px;
     border: 3px dotted #004400; }
-    #content_box .friend_with_checkbox .user-blurb {
+    #content-box .friend_with_checkbox .user-blurb {
       display: inline-block; }
-    #content_box .friend_with_checkbox input {
+    #content-box .friend_with_checkbox input {
       float: right;
       margin-right: 10px;
       margin-top: 10px; }
@@ -205,7 +199,7 @@ hr {
 
 #leaderboard {
   margin-bottom: 50px; }
-  #leaderboard #non_scoring_users .score_totals {
+  #leaderboard #non_scoring_users .score-totals {
     font-style: italic; }
 
 
