@@ -175,8 +175,8 @@ describe User do
       ].each do |name_str|
         it "'#{name_str}'" do
           lambda do
-            u = create_user(:name => name_str)
-            u.errors.on(:name).should     be_nil
+            u = create_user(:first_name => name_str)
+            u.errors.on(:first_name).should     be_nil
           end.should change(User, :count).by(1)
         end
       end
@@ -187,8 +187,8 @@ describe User do
        ].each do |name_str|
         it "'#{name_str}'" do
           lambda do
-            u = create_user(:name => name_str)
-            u.errors.on(:name).should_not be_nil
+            u = create_user(:first_name => name_str)
+            u.errors.on(:first_name).should_not be_nil
           end.should_not change(User, :count)
         end
       end

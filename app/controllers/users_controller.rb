@@ -1,7 +1,7 @@
 class UsersController < ApplicationController 
 
   def index
-    @users = User.find(:all, :conditions => ["login LIKE ? OR name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%"])
+    @users = User.find(:all, :conditions => ["login LIKE ? OR first_name LIKE ? OR last_name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%"])
   end
 
   def new

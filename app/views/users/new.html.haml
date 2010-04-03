@@ -5,9 +5,13 @@
   .formError= "There were problems with your user information:"
 - form_for :user, :url => users_path do |f|
   .row.form-input
-    = f.label :name
-    = f.text_field :name
-  = error_message_on @user, :name, :prepend_text => "Name "
+    = f.label :first_name
+    = f.text_field :first_name
+  = error_message_on @user, :first_name, :prepend_text => "First Name "
+  .row.form-input
+    = f.label :last_name
+    = f.text_field :last_name
+  = error_message_on @user, :last_name, :prepend_text => "Last Name "
   .row.form-input
     = f.label :login
     = f.text_field :login

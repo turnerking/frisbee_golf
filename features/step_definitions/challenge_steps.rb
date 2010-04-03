@@ -1,5 +1,5 @@
 Given /^I challenge "([^\"]*)"$/ do |friends_names|
-  friends = friends_names.split(",").map {|fr| User.find_by_name(fr)}
+  friends = friends_names.split(",").map {|fr| User.find_by_first_name_and_last_name(fr.split(" ")[0], fr.split(" ")[1])}
   friends.each do |friend|
     check("challenge_user_id_#{friend.id}")
   end
@@ -19,14 +19,14 @@ Then /^"(.*)" has a new challenge$/ do |course_name|
 end
 
 Then /^"([^\"]*)" ha(?:s|ve) a challenge$/ do |user_names|
-  users = user_names.split(",").map {|fr| User.find_by_name(fr)}
+  users = user_names.split(",").map {|fr| User.find_by_first_name_and_last_name(fr.split(" ")[0], fr.split(" ")[1])}
   users.each do |user|
     user.challenges.size.should == 1
   end
 end
 
 Then /^"([^\"]*)" do(?:es|) not have a challenge$/ do |user_names|
-  users = user_names.split(",").map {|fr| User.find_by_name(fr)}
+  users = user_names.split(",").map {|fr| User.find_by_first_name_and_last_name(fr.split(" ")[0], fr.split(" ")[1])}
   users.each do |user|
     user.challenges.should be_empty
   end

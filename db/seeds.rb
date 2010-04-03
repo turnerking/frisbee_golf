@@ -6,7 +6,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
 
-user = User.create!(:name => "Admin", :login => "siteadmin", :email => "turneraking@gmail.com", :password => "P@55wOrD", :password_confirmation => "P@55wOrD")
+user = User.create!(:first_name => "Admin", :login => "siteadmin", :email => "turneraking@gmail.com", :password => "P@55wOrD", :password_confirmation => "P@55wOrD")
 user.update_attribute(:admin, true)
 
 holes = (1..9).map{|i| Hole.create(:number => i, :par => ([1,2,9].include?(i) ? 4 : 3), :distance_in_ft => 200)}
