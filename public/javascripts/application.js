@@ -3,11 +3,11 @@
 
 
 function add_hole() {
-	var current_index = new RegExp(/\d+/).exec($(".hole_fields:last .field_row:last input").attr("name"));
+	var current_index = new RegExp(/\d+/).exec($(".hole_fields:last .row:last input").attr("name"));
 	var partial = $("div.hole_fields:last").clone(true).insertAfter("div.hole_fields:last");
 	var new_index = (new Number(current_index) + 1).toString();
-	var inputs = $("div.hole_fields:last .field_row input");
-	var labels = $("div.hole_fields:last .field_row label");
+	var inputs = $("div.hole_fields:last .row input");
+	var labels = $("div.hole_fields:last .row label");
 	for(var i=0; i < inputs.length; i++) {
 		$(labels[i]).attr("for", $(labels[i]).attr("for").replace(/\d+/, new_index));
 		$(inputs[i]).attr("id", $(inputs[i]).attr("id").replace(/\d+/, new_index));

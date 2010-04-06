@@ -40,6 +40,10 @@ Given /^I am logged in with "(.*)" and "(.*)"$/ do |username, password|
   click_button("Log In")
 end
 
+Given /^I debug$/ do
+  puts response.body
+end
+
 Then /^I see the response$/ do
   print response.body
 end

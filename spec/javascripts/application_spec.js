@@ -1,5 +1,6 @@
 require("spec_helper.js");
 require("../../public/javascripts/jquery-1.3.2.js");
+require("../../public/javascripts/jquery-ui-1.7.2.custom.min.js")
 require("../../public/javascripts/application.js");
 
 Screw.Unit(function(){
@@ -15,7 +16,7 @@ Screw.Unit(function(){
 		it("adds a hole to the bottom of the list", function(){
 		  $("#add_hole").click();
 			expect($('.hole_fields').length).to(equal, 2);
-			expect($('.hole_fields:last .field_row:last input').attr("name")).to(equal, "course[holes_attributes][1][distance_in_ft]");
+			expect($('.hole_fields:last .row:last input').attr("name")).to(equal, "course[holes_attributes][1][distance_in_ft]");
 		});
 		
 		it("adds up scores", function(){

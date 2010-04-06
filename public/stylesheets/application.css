@@ -82,7 +82,6 @@ hr {
 
 .row {
   margin: 2px 0px;
-  min-height: 22px;
   clear: left; }
   .row .label, .row label {
     width: 120px;
@@ -95,20 +94,37 @@ hr {
     float: left;
     text-align: right;
     margin-right: 10px; }
-  .row #scorecard_submit, .row .wide-label-submit {
+  .row #scorecard_submit, .row .wide-label-submit, .row #review_submit {
     margin-left: 125px; }
-  .row #review_submit, .row .small-label_submit {
+  .row .small-label-submit {
     margin-left: 70px; }
   .row input.integer {
     width: 60px; }
   .row .info {
     margin-left: 130px; }
+  .row p.legend {
+    margin-left: 135px;
+    width: 170px;
+    font-size: 12px; }
+
+.row.under_input {
+  margin: -6px 0px 4px; }
+
+.row.form-input {
+  min-height: 22px; }
+
+.row.model-content {
+  min-height: 19px; }
 
 
 .formError {
   color: red;
   margin-left: 130px;
   clear: both; }
+
+
+#login-button {
+  margin-top: 5px; }
 
 
 #courses {
@@ -155,7 +171,8 @@ hr {
 
 .score {
   margin: 0;
-  width: 30px; }
+  width: 30px;
+  height: 22px; }
 
 #reviews h3 {
   margin-bottom: 5px; }
@@ -176,6 +193,13 @@ hr {
 
 #my-best .row, #all-time .row, #last-month .row {
   margin-bottom: 20px; }
+
+
+#holes {
+  margin-top: 20px; }
+  #holes .hole_fields {
+    margin-left: 10px;
+    margin-bottom: 5px; }
 
 
 #content-box {
@@ -199,7 +223,7 @@ hr {
 
 #leaderboard {
   margin-bottom: 50px; }
-  #leaderboard #non_scoring_users .score-totals {
+  #leaderboard #non-scoring-users .score-totals {
     font-style: italic; }
 
 

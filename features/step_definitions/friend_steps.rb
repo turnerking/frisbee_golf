@@ -8,10 +8,6 @@ Given /^"(.*)" has a friend request from "(.*)"$/ do |approver, requester|
   Friendship.create(:approver => approving_user, :requester => requesting_user)
 end
 
-Given /^I debug$/ do
-  puts response.body
-end
-
 Then /^"(.*)" should have a pending approval$/ do |name|
   user = User.find_by_first_name_and_last_name(name.split(" ")[0], name.split(" ")[1])
   user.friendships_to_approve.size.should == 1
