@@ -137,7 +137,7 @@ describe Course do
         @scorecard1 = mock("scorecard", :final_score => +2)
         @scorecard2 = mock("scorecard", :final_score => -3)
         @scorecard3 = mock("scorecard", :final_score => -4)
-        @course.scorecards.should_receive(:find).and_return([@scorecard1, @scorecard2, @scorecard3])
+        Scorecard.should_receive(:top_scores).and_return([@scorecard3, @scorecard2, @scorecard1])
         @course.best_scores_from(1.year.ago, 2.days.from_now, 2).should == [@scorecard3, @scorecard2]
       end
     end

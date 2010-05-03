@@ -13,6 +13,11 @@ class Scorecard < ActiveRecord::Base
   validates_presence_of :user_id
   validate :not_bullshit_score
   
+  def self.top_scores(args)
+    all_scorecards = Scorecard.find(:all, args)
+    Scorecard.sorted(all_scorecards)
+  end
+  
   def final_score
     total_shots - total_par
   end
@@ -32,5 +37,12 @@ class Scorecard < ActiveRecord::Base
   def not_bullshit_score
     bull_shit = scores.map {|score| (score.par/2) + 1}.sum
     self.errors.add_to_base("There's no way you got #{total_shots} on a par #{total_par}") if total_shots < bull_shit
+  end
+  
+  private
+  
+  def self.sorted(scorecards)
+    return [] if scorecards.empty?
+    scorecards.sort {|a,b| a.final_score <=> b.final_score}
   end
 end

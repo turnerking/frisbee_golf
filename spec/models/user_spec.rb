@@ -20,7 +20,7 @@ describe User do
       user.stub!(:friends_ids).and_return([6,8])
       scorecard = mock("scorecard", :final_score => 33)
       scorecard2 = mock("scorecard", :final_score => 2)
-      Scorecard.stub!(:find).and_return([scorecard, scorecard2])
+      Scorecard.stub!(:top_scores).and_return([scorecard2, scorecard])
       user.best_scores_for_friends(7.days.ago, 1.day.ago, does_not_exist = 9999, to_return = 2).should == [scorecard2, scorecard]
     end
     
@@ -29,7 +29,7 @@ describe User do
       user.stub!(:friends_ids).and_return([6,8])
       scorecard = mock("scorecard", :final_score => 33)
       scorecard2 = mock("scorecard", :final_score => 2)
-      Scorecard.stub!(:find).and_return([scorecard, scorecard2])
+      Scorecard.stub!(:top_scores).and_return([scorecard2, scorecard])
       user.best_scores_for_friends(7.days.ago, 1.day.ago, does_not_exist = 9999, to_return = 1).should == [scorecard2]
     end
   end
@@ -50,7 +50,7 @@ describe User do
     it "returns only scorecard from best_scores_for when there is one" do
       user = User.new
       scorecard = mock("scorecard", :final_score => 33)
-      user.should_receive(:scorecards).and_return(mock("scorecards", :find => [scorecard]))
+      Scorecard.should_receive(:top_scores).and_return([scorecard])
       user.best_score_for(7.days.ago, 1.day.ago, does_not_exist = 9999).should == scorecard
     end
     
@@ -58,7 +58,7 @@ describe User do
       user = User.new
       scorecard = mock("scorecard", :final_score => 33)
       scorecard2 = mock("scorecard", :final_score => 2)
-      user.should_receive(:scorecards).and_return(mock("scorecards", :find => [scorecard, scorecard2]))
+      Scorecard.should_receive(:top_scores).and_return([scorecard2, scorecard])
       user.best_score_for(7.days.ago, 1.day.ago, does_not_exist = 9999).should == scorecard2
     end
   end

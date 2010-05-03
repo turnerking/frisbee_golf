@@ -76,13 +76,14 @@ class User < ActiveRecord::Base
     where_statement = "played_at > ? AND played_at < ? AND course_id = ? AND user_id IN (#{friends_ids.join(",")})"
     conditions = [where_statement, play_from, play_to, course_id]
     
-    all_scorecards = Scorecard.find(:all, :conditions => conditions)
-    sorted_scorecards(all_scorecards)[0, number_to_return]
+    Scorecard.top_scores(:conditions => conditions)[0, number_to_return]
   end
   
   def best_scores_for(play_from, play_to, course_id, number_to_return = 1)
-    all_scorecards = self.scorecards.find(:all, :conditions => ["played_at > ? AND played_at < ? AND course_id = ?", play_from, play_to, course_id])
-    sorted_scorecards(all_scorecards)[0, number_to_return]
+    where_statement = "played_at > ? AND played_at < ? AND course_id = ? AND user_id = ?"
+    conditions = [where_statement, play_from, play_to, course_id, self.id]
+    
+    Scorecard.top_scores(:conditions => conditions)[0, number_to_return]
   end
   
   def best_score_for(play_from, play_to, course_id, number_to_return = 1)
@@ -94,20 +95,13 @@ class User < ActiveRecord::Base
     ((Time.now - birth_date.at_beginning_of_day)/(60*60*24*365)).floor
   end
   
+  #Only used during testing
   def age=(number)
     write_attribute(:birth_date, Time.now.years_ago(number.to_i))
   end
   
   def name
-    return "" if first_name.blank? && last_name.blank?
-    "#{first_name} #{last_name}"
-  end
-
-  private
-  
-  def sorted_scorecards(scorecards)
-    return [] if scorecards.empty?
-    scorecards.sort {|a,b| a.final_score <=> b.final_score}
+    "#{first_name} #{last_name}".strip
   end
 
 end

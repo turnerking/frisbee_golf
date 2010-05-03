@@ -77,4 +77,13 @@ describe Scorecard do
       scorecard.scores.size.should == 1
     end
   end
+  
+  context "top scores" do
+    it "returns scorecards in order by final score" do
+      scorecard = mock("scorecard", :final_score => 33)
+      scorecard2 = mock("scorecard", :final_score => 2)
+      Scorecard.stub!(:find).and_return([scorecard, scorecard2])
+      Scorecard.top_scores(:condtions => mock("some conditions")).should == [scorecard2, scorecard]
+    end
+  end
 end

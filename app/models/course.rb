@@ -39,12 +39,10 @@ class Course < ActiveRecord::Base
   end
   
   def best_scores_from(play_from, play_to, number_to_return = 1)
-    all_scorecards = self.scorecards.find(:all, :conditions => ["played_at > ? AND played_at < ?", play_from, play_to])
-    if all_scorecards.empty?
-      []
-    else
-      all_scorecards.sort {|a,b| a.final_score <=> b.final_score}[0, number_to_return]
-    end
+    where_statement = "played_at > ? AND played_at < ? AND course_id = ?"
+    conditions = [where_statement, play_from, play_to, self.id]
+    
+    Scorecard.top_scores(:conditions => conditions)[0, number_to_return]
   end
   
   private
