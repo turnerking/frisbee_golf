@@ -1,36 +1,36 @@
 - form_for @course, :url => admin_courses_path do |f|
-	.row.form-input
-		= f.label :name
-		= f.text_field :name
-	.row.form-input
-		= f.label :address
-		= f.text_field :address
-	.row.form-input
-		= f.label :tee_type
-		= f.select :tee_type, Course::TEE_TYPES
-	.row.form-input
-		= f.label :difficulty
-		= f.select :difficulty, (1..5)
-	.row.form-input
-		= f.label :tree_interference
-		= f.select :tree_interference, (1..5)
-	.row.form-input
-		= f.label :hole_type
-		= f.select :hole_type, Course::HOLE_TYPES
-	#holes
-		- [Hole.new].each do |hole|
-			- f.fields_for :holes, hole do |hole_fields|
-				.hole_fields
-					.row.form-input
-						= hole_fields.label :number, "No."
-						= hole_fields.text_field :number
-					.row.form-input
-						= hole_fields.label :par
-						= hole_fields.text_field :par
-					.row.form-input
-						= hole_fields.label :distance_in_ft, "Distance (ft)"
-						= hole_fields.text_field :distance_in_ft
-	.row.model-content
+  .row.form-input
+    = f.label :name
+    = f.text_field :name
+  .row.form-input
+    = f.label :address
+    = f.text_field :address
+  .row.form-input
+    = f.label :tee_type
+    = f.select :tee_type, Course::TEE_TYPES
+  .row.form-input
+    = f.label :difficulty
+    = f.select :difficulty, (1..5)
+  .row.form-input
+    = f.label :tree_interference
+    = f.select :tree_interference, (1..5)
+  .row.form-input
+    = f.label :hole_type
+    = f.select :hole_type, Course::HOLE_TYPES
+  #holes
+    - [Hole.new].each do |hole|
+      - f.fields_for :holes, hole do |hole_fields|
+        .hole_fields
+          .row.form-input
+            = hole_fields.label :number, "No."
+            = hole_fields.text_field :number
+          .row.form-input
+            = hole_fields.label :par
+            = hole_fields.text_field :par
+          .row.form-input
+            = hole_fields.label :distance_in_ft, "Distance (ft)"
+            = hole_fields.text_field :distance_in_ft
+  .row.model-content
     = link_to "Add Hole", "#", :id => "add_hole", :class => "small-label-submit", :onclick => "add_hole();"
-	.row.form-input
-		= f.submit "Create", :class => "small-label-submit"
+  .row.form-input
+    = f.submit "Create", :class => "small-label-submit"
