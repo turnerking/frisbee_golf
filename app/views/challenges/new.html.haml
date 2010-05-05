@@ -9,13 +9,13 @@
     .name= User.find(@challenge.organizer_id).name
   .row.form-input
     = f.label :play_from
-    = f.datetime_select :play_from, :use_short_month => true
+    = f.datetime_select :play_from, :use_short_month => true, :default => Time.now.localtime
   .row.form-input
     = f.label :play_to
-    = f.datetime_select :play_to, :use_short_month => true, :default => 7.days.from_now
+    = f.datetime_select :play_to, :use_short_month => true, :default => 7.days.from_now.localtime
   .row.form-input
     = f.label :submit_by
-    = f.datetime_select :submit_by, :use_short_month => true, :default => 9.days.from_now
+    = f.datetime_select :submit_by, :use_short_month => true, :default => 9.days.from_now.localtime
   .row.form-input
     = hidden_field_tag "challenge[user_ids][]", current_user.id, :id => "challenge_user_id_#{current_user.id}"
     = f.label :participants

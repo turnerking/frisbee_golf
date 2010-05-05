@@ -10,9 +10,10 @@
   .row.model-content
     .label= "Age:"
     .info= @user.age
-  .row.model-content
-    .label= "Gender:"
-    .info= display_gender(@user.gender)
+  - unless @user.gender.nil? 
+    .row.model-content
+      .label= "Gender:"
+      .info= display_gender(@user.gender)
   .row.model-content
     .label= "Email:"
     .info= @user.email

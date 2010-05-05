@@ -24,4 +24,4 @@
     %p= "+0"
     %p= show_golf_score(scorecard.final_score)
   .label= "&nbsp;"
-  .name= "On #{scorecard.played_at.to_formatted_s(:long_ordinal)} by #{scorecard.user.login}"
+  .name= "On #{scorecard.played_at.strftime("%Y/%m/%d %I:%M%p")} by #{scorecard.user.login}"
