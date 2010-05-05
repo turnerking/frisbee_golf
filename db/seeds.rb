@@ -11,15 +11,15 @@ user.update_attribute(:admin, true)
 
 #O'Brien Park, Downers Grove, IL
 obrien_park_holes = 
-  [ Hole.create(:number => 1, :par => 4, :distance_in_ft => 200),
-    Hole.create(:number => 2, :par => 4, :distance_in_ft => 200),
-    Hole.create(:number => 3, :par => 3, :distance_in_ft => 200),
-    Hole.create(:number => 4, :par => 3, :distance_in_ft => 200),
-    Hole.create(:number => 5, :par => 3, :distance_in_ft => 200),
-    Hole.create(:number => 6, :par => 3, :distance_in_ft => 200),
-    Hole.create(:number => 7, :par => 3, :distance_in_ft => 200),
-    Hole.create(:number => 8, :par => 3, :distance_in_ft => 200),
-    Hole.create(:number => 9, :par => 4, :distance_in_ft => 200)]
+  [ Hole.create(:number => 1, :par => 4, :distance_in_ft => 280),
+    Hole.create(:number => 2, :par => 4, :distance_in_ft => 330),
+    Hole.create(:number => 3, :par => 3, :distance_in_ft => 178),
+    Hole.create(:number => 4, :par => 3, :distance_in_ft => 156),
+    Hole.create(:number => 5, :par => 3, :distance_in_ft => 208),
+    Hole.create(:number => 6, :par => 3, :distance_in_ft => 184),
+    Hole.create(:number => 7, :par => 3, :distance_in_ft => 186),
+    Hole.create(:number => 8, :par => 3, :distance_in_ft => 166),
+    Hole.create(:number => 9, :par => 4, :distance_in_ft => 330)]
 
 obrien_park = 
   Course.create!(:name => "O'Brien Park",
