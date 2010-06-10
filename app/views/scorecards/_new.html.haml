@@ -31,16 +31,6 @@
         %p.shot_total= 0
     = error_message_on @scorecard, :base
     .row.form-input
-      = f.label :weather
-      = f.select :weather, Scorecard::WEATHER_CONDITIONS
-    .row.form-input
-      = f.label :temperature
-      = f.text_field :temperature, :class => "integer"
-    = error_message_on @scorecard, :temperature, :prepend_text => "Temperature "
-    .row.form-input
-      = f.label :ground_conditions
-      = f.select :ground_conditions, Scorecard::GROUND_CONDITIONS
-    .row.form-input
       = f.label :played_at
       = f.datetime_select :played_at, :use_short_month => true, :default => Time.now.localtime
     .row.form-input
@@ -49,5 +39,13 @@
     .row.form-input
       = f.label :notes, "Round Notes"
       = f.text_area :notes, :rows => 5
+    .row.form-input
+      = f.label :weather
+      = f.text_field :temperature, :class => "integer", :value => "Temp"
+      = f.select :weather, Scorecard::WEATHER_CONDITIONS
+    = error_message_on @scorecard, :temperature, :prepend_text => "Temperature "
+    .row.form-input
+      = f.label :ground_conditions
+      = f.select :ground_conditions, Scorecard::GROUND_CONDITIONS
     .row.form-input
       = f.submit "Submit Round"
