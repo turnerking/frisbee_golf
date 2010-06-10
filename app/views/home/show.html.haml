@@ -1,3 +1,8 @@
-%h2= "Courses"
-#courses
-	= render :partial => "course", :collection => @courses
+.opening_blurb
+  %p#welcome= "Welcome to Frisbee Golf Tracker"
+  %p#tagline= "The newest way to track you and your friends' progress in frisbee golf online."
+  %p= "Click on a course, get to know what you're facing. Then play it, a scorecard is right on the course page to fill out when you're done. Rate and review the course and compare yourself to friends and other disc golfers. We can even help you challenge your friends."
+  %p= "Don't see your local course on here? Grab all the info you have about it, and send it to me (<a href='mailto:turneraking@gmail.com'>turneraking@gmail.com</a>) and I'll get it in as soon as I can. See wrong or missing information? Let me know and I'll verify and change it."
+#home_courses
+  %h2= "Courses"
+  = render :partial => "course", :collection => @courses

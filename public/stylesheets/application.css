@@ -123,6 +123,28 @@ hr {
   clear: both; }
 
 
+.opening_blurb {
+  margin: 0px 0px 20px 20px;
+  float: left;
+  width: 510px;
+  line-height: 25px;
+  font-size: 14px;
+  text-align: justify; }
+  .opening_blurb #welcome {
+    font-size: 24px;
+    font-weight: bold; }
+  .opening_blurb #tagline {
+    line-height: 14px;
+    margin-bottom: 11px;
+    vertical-align: top;
+    font-style: italic; }
+
+#home_courses {
+  padding: 0px 20px;
+  width: 490px;
+  float: right; }
+
+
 #login-button {
   margin-top: 5px; }
 
