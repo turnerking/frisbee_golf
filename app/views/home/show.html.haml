@@ -1,8 +1,15 @@
 .opening_blurb
   %p#welcome= "Welcome to Frisbee Golf Tracker"
   %p#tagline= "The newest way to track you and your friends' progress in frisbee golf online."
-  %p= "Click on a course, get to know what you're facing. Then play it, a scorecard is right on the course page to fill out when you're done. Rate and review the course and compare yourself to friends and other disc golfers. We can even help you challenge your friends."
-  %p= "Don't see your local course on here? Grab all the info you have about it, and send it to me (<a href='mailto:turneraking@gmail.com'>turneraking@gmail.com</a>) and I'll get it in as soon as I can. See wrong or missing information? Let me know and I'll verify and change it."
+  %ul
+    %li= "Browse our list of courses, find one nearby"
+    %li= "Record your scores online"
+    %li= "See where you rank among your friends and the world"
+    %li= "Review and rate courses"
+    %li= "Challenge your friends to competitions"
 #home_courses
   %h2= "Courses"
   = render :partial => "course", :collection => @courses
+  %p.missing-info
+    %span.question= "Don't see your local course or there is wrong/missing information?" 
+    = "I personally don't have the opportunity to get information for all courses. But if you want to see your local courses on Frisbee Golf Tracker, obtain all the hole and location information for the course and send it to <a href='mailto:turneraking@gmail.com'>turneraking@gmail.com</a>. I'll verify the information and get it in as soon as I can."

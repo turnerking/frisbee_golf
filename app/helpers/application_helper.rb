@@ -7,4 +7,12 @@ module ApplicationHelper
   def display_gender(gender)
     gender =~ /^m/i ? "Male" : "Female"
   end
+  
+  def class_for_score(shots, par)
+    case
+    when shots > par : "over-par"
+    when shots < par : "under-par"
+    else "par"
+    end 
+  end
 end

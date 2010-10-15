@@ -10,9 +10,9 @@
       %br
       = text_field_tag :number, score.number, :disabled => true, :class => "score"
       %br
-      = text_field_tag :par, score.par, :disabled => true, :class => "score"
+      = text_field_tag :par, score.par, :disabled => true, :class => "score par"
       %br
-      = text_field_tag :shots, score.shots, :disabled => true, :class => "score"
+      = text_field_tag :shots, score.shots, :disabled => true, :class => "score #{class_for_score(score.shots, score.par)}"
   .score-totals
     %p= scorecard.total_distance
     %p= "&nbsp;"
